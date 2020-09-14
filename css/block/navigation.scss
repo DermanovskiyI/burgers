@@ -1,0 +1,36 @@
+.navigation {
+    margin-right: 15px;
+    .navigation__list {
+        display: flex;
+    }
+    
+    .navigation__item:last-child .navigation__link::after {
+        display: none;
+    }
+    
+    .navigation__link {
+        font-family: Ubuntu;
+        font-size: 14px;
+        font-weight: 500;
+        color: $white;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+    
+        &::after {
+            content:"";
+            width: 4px;
+            height: 4px;
+            display: block;
+            border-radius: 50%;
+            background: $white;
+            margin: 0 10px;
+        }
+          
+        
+    }
+}
+
+    
+    
+

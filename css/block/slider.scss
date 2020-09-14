@@ -1,0 +1,32 @@
+.scroll {
+    display: none;
+}
+
+
+.visible-slider {
+    background: url('./picture/icons/arrow-scroll.svg') center center / 100% no-repeat;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.visible-slider--down {
+    top: 90%;
+    left: 50%;
+  }
+  
+ 
+ .visible-slider--left {
+   top: 50%;
+   right: 110%;
+   transform: rotate(90deg);
+ }
+
+ 
+ .visible-slider--right {
+   top: 50%;
+   left: 110%;
+   transform: rotate(270deg);
+ }
+ 

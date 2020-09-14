@@ -1,0 +1,87 @@
+// .team {
+//     background: url('./picture/img/section_team.png') 100% 100% /cover no-repeat;
+//     &__content {
+//         background-color: $grey;
+//         opacity: 0.93;
+//     }
+// }
+.team {
+    display: flex;
+    justify-content: flex-end;
+    background: url('./picture/img/section_team.png') 100% 100% /cover no-repeat;
+    &-title {
+        @include title;
+        text-align: center;
+        margin: 58px 0 46px 0;   
+    }
+    &__content {
+        width: 50%;
+        padding-left: 9%;
+        
+    }
+    &__item {
+        margin-bottom: 35px;
+    }
+    &__dropdown {
+        display: inline-flex;
+        cursor: pointer;
+        margin-bottom: 20px;
+        
+    }
+    &__button {
+        cursor: pointer;
+        margin-right: 10px;
+        &:focus  .team__dropdown-content {
+            display: none;
+        }
+    }
+    &__name {
+        font-family: Gagalin;
+        font-size: 14px;
+        font-weight: normal;
+        color: $white;
+    }
+    &__dropdown-content {
+        display: flex;
+        align-items: center;
+    }
+    &__avatar {
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 21px;
+        
+    }
+    &__desc {
+        flex-basis: 70%;
+    }
+    &__position {
+        font-family: Ubuntu;
+        font-size: 14px;
+        font-weight: 600;
+        color: $white;
+        text-align: left;
+        margin-bottom: 25px;
+    }
+    &__text {
+        font-family: Ubuntu;
+        font-size: 14px;
+        font-weight: 300;
+        color: $white;
+        text-align: left;
+    }
+}
+
+.team__button {
+    display: none;
+}
+
+.visible-button {
+    border: 6px solid;
+    border-color: $yellow transparent transparent transparent;
+    width: 0;
+    height: 0;
+    margin-right: 10px;
+}
+.team__button:focus ~ .visible-button {
+    border-color: transparent transparent $yellow transparent
+}

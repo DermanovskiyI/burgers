@@ -1,0 +1,56 @@
+.consist {
+    position: absolute;
+    bottom: 90%;
+    &__img {
+        background-color: #f08c33;
+        display: flex;
+        width: 90px;
+        height: 90px;
+        justify-content: center;
+        border-radius: 5px;
+        cursor: pointer;
+        align-items: center;  
+    }
+    &:hover .consist__list {
+        display: flex;
+    }
+    &__list {
+        display: none;
+        flex-direction: column;
+        width: 270px;
+        background-color: $white;
+        opacity: 0.9;
+        border-radius: 5px;
+        position: absolute;
+        left: 87px;
+        top: 0px;
+        padding: 20px 15px 10px 5px;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    &__img-drop {
+        margin: 11px;
+        flex: 1;
+    }
+    &__text {
+        display: flex;
+        flex: 4;
+        justify-content: space-between;
+        font-size: 14px;
+        font-family: "Ubuntu";
+    }
+}   
+.calories {
+    position: absolute;
+    top: 81%;
+    text-align: center;
+    &__text {
+        @include subtitle;
+        font-size: 14px;
+        opacity: 0.5;
+        text-transform: uppercase;
+    }
+}

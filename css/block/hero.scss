@@ -1,0 +1,23 @@
+.hero {
+    background: url('./picture/img/section_hero.png') center center / cover no-repeat;
+    .hero__container {
+        display: flex;
+        flex: 0.85;
+    }
+    
+    .hero__content {
+        display: flex;
+        align-items: center;
+    }
+        
+    .hero-title {
+            @include title;
+            margin-bottom: 20px;
+    }
+
+    .hero__subtitle {
+        @include subtitle;
+    }
+    
+}
+

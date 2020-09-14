@@ -1,0 +1,41 @@
+// color
+$yellow: #f9b43b;
+$red: #e45028;
+$grey: #2f3234;
+$white: #ffffff;
+$orange: #e35028;
+
+// fonts
+@mixin title {
+    font-family: Gagalin;
+    font-size: 72px;
+    color: $yellow;
+}
+@mixin subtitle {
+    font-family: lifehack;
+    font-size: 72px;
+    color: $white;
+}
+
+
+
+// normilize
+@import "css/layout/normilize.scss";
+
+
+// layout
+@import "css/layout/layout.scss";
+@import "css/layout/fonts.scss";
+
+// blocks
+@import "css/block/hero.scss";
+@import "css/block/header.scss";
+@import "css/block/navigation.scss";
+@import "css/block/button.scss";
+@import "css/block/best.scss";
+@import "css/block/best_list.scss";
+@import "css/block/burger.scss";
+@import "css/block/consist.scss";
+@import "css/block/slider.scss";
+@import "css/block/team.scss";
+@import "css/block/review.scss";

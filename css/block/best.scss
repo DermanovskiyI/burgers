@@ -1,0 +1,9 @@
+.best {
+    background: url('./picture/img/section_second.png') center center / cover no-repeat;
+    .best-title {
+        @include title;
+        color: $grey;
+        text-align: center;
+        margin-bottom: 55px;
+    }
+}
