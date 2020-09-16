@@ -17,6 +17,12 @@ $orange: #e35028;
     color: $white;
 }
 
+// Циклы 
+// align text in form 
+
+// @each $var in form {
+    
+// }
 
 
 // normilize
@@ -39,3 +45,5 @@ $orange: #e35028;
 @import "css/block/slider.scss";
 @import "css/block/team.scss";
 @import "css/block/review.scss";
+@import "css/block/order.scss";
+@import "css/block/form.scss";

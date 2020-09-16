@@ -7,7 +7,7 @@
         height: 100%;
     }
 
-    // width 25% height 50% - расположение по 4 блока на двух строчках. position relative для того чтобы блок hover-block встал на место блока review__item 
+    // width 25% каждый блок занимает 25% пространства (4 блока на строчку) height 50% - каждый элемент занимает 50% высоты (->всего будет две строчки). position relative для того чтобы блок hover-block встал на место блока review__item 
     &__item {
         width: 25%;
         height: 50%;

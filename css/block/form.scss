@@ -1,0 +1,47 @@
+.form {
+    display: flex;
+    &__col-left {
+        flex: 1;
+    }
+    &__row {
+        display: flex;
+        margin-bottom: 19px;
+    }
+    &__input {
+        margin-right: 23px;
+        flex: 1;
+    }
+    &__name {
+        font-family: Ubuntu;
+        font-size: 14px;
+        font-weight: 300;
+        color: $white;
+        margin-bottom: 9px;
+    }
+    &__input-elem {
+        border-radius: 5px;
+        border: 2px solid transparent;
+        width: 100%;
+        padding: 12px 21px;
+        resize: none;
+        &:focus {
+            outline: none;
+            border-color: $yellow;
+        } 
+    }
+    &__col-right {
+        flex: 1;
+    }
+    &__input--without-margin {
+        margin-right: 0;
+    }
+    &__input-elem--padding {
+        padding-bottom: 85px;
+    }
+    &__radio {
+        display: inline-flex;
+    }
+    &__checkbox {
+        display: inline-flex;
+    }
+}

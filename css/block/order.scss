@@ -1,0 +1,7 @@
+.order {
+    background: url('./picture/img/section_order.png') center center / cover no-repeat;
+    &-title {
+            @include title;
+            text-align: center;
+    }
+}

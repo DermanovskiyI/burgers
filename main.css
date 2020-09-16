@@ -507,6 +507,7 @@ p {
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
+  outline: none;
 }
 
 .best {
@@ -730,6 +731,8 @@ p {
   border-radius: 50%;
   overflow: hidden;
   margin-right: 21px;
+  display: flex;
+  justify-content: center;
 }
 .team__desc {
   flex-basis: 70%;
@@ -841,4 +844,62 @@ p {
 
 .btn--black {
   background-color: #2f3234;
+}
+
+.order {
+  background: url("./picture/img/section_order.png") center center/cover no-repeat;
+}
+.order-title {
+  font-family: Gagalin;
+  font-size: 72px;
+  color: #f9b43b;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+}
+.form__col-left {
+  flex: 1;
+}
+.form__row {
+  display: flex;
+  margin-bottom: 19px;
+}
+.form__input {
+  margin-right: 23px;
+  flex: 1;
+}
+.form__name {
+  font-family: Ubuntu;
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 9px;
+}
+.form__input-elem {
+  border-radius: 5px;
+  border: 2px solid transparent;
+  width: 100%;
+  padding: 12px 21px;
+  resize: none;
+}
+.form__input-elem:focus {
+  outline: none;
+  border-color: #f9b43b;
+}
+.form__col-right {
+  flex: 1;
+}
+.form__input--without-margin {
+  margin-right: 0;
+}
+.form__input-elem--padding {
+  padding-bottom: 85px;
+}
+.form__radio {
+  display: inline-flex;
+}
+.form__checkbox {
+  display: inline-flex;
 }

@@ -49,7 +49,8 @@
         border-radius: 50%;
         overflow: hidden;
         margin-right: 21px;
-        
+        display: flex;
+        justify-content: center;
     }
     &__desc {
         flex-basis: 70%;
