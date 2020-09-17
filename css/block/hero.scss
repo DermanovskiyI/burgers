@@ -1,21 +1,24 @@
 .hero {
     background: url('./picture/img/section_hero.png') center center / cover no-repeat;
-    .hero__container {
+    &__container {
         display: flex;
         flex: 0.85;
     }
     
-    .hero__content {
+    &__content {
         display: flex;
         align-items: center;
     }
+    &__img {
+        max-width: 100%;
+    }
         
-    .hero-title {
+    &-title {
             @include title;
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
     }
 
-    .hero__subtitle {
+    &__subtitle {
         @include subtitle;
     }
     

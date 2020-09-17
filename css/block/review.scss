@@ -61,12 +61,12 @@
     }
     &__title {
         @include title;
-        font-size: 14px;
+        font-size: 0.875rem;
         color: $white;
     }
     &__text {
         font-family: Ubuntu;
-        font-size: 14px;
+        font-size: 0.875rem;
         color: $white;
         font-weight: normal;
         width: 80%;

@@ -1,13 +1,18 @@
 .btn {
-    border-radius: 5px;
-    padding: 10px 15px;
+    border-radius: 0.3125rem;
+    padding: 0.625rem 0.9375rem;
     background-color: $red;
     border: none;
     color: $white;
     text-transform: uppercase;
     font-family: Ubuntu;
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 500;
     cursor: pointer;
     outline: none;
+}
+
+.btn--without-bg {
+    background-color: transparent;
+    text-transform: capitalize;
 }

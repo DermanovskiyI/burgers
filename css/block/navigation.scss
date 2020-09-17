@@ -1,16 +1,16 @@
 .navigation {
-    margin-right: 15px;
-    .navigation__list {
+    margin-right: 0.9375rem;
+    &__list {
         display: flex;
     }
     
-    .navigation__item:last-child .navigation__link::after {
+    &__item:last-child .navigation__link::after {
         display: none;
     }
     
-    .navigation__link {
+    &__link {
         font-family: Ubuntu;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 500;
         color: $white;
         text-transform: uppercase;
@@ -19,15 +19,13 @@
     
         &::after {
             content:"";
-            width: 4px;
-            height: 4px;
+            width: 0.25rem;
+            height: 0.25rem;
             display: block;
             border-radius: 50%;
             background: $white;
-            margin: 0 10px;
+            margin: 0 0.625rem;
         }
-          
-        
     }
 }
 

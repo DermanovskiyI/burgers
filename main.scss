@@ -8,12 +8,12 @@ $orange: #e35028;
 // fonts
 @mixin title {
     font-family: Gagalin;
-    font-size: 72px;
+    font-size: 4.5rem;
     color: $yellow;
 }
 @mixin subtitle {
     font-family: lifehack;
-    font-size: 72px;
+    font-size: 4.5rem;
     color: $white;
 }
 
@@ -36,10 +36,10 @@ $orange: #e35028;
 // blocks
 @import "css/block/hero.scss";
 @import "css/block/header.scss";
+@import "css/block/logo.scss";
 @import "css/block/navigation.scss";
 @import "css/block/button.scss";
 @import "css/block/best.scss";
-@import "css/block/best_list.scss";
 @import "css/block/burger.scss";
 @import "css/block/consist.scss";
 @import "css/block/slider.scss";

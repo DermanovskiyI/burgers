@@ -2,7 +2,7 @@
     background-image: linear-gradient(to top, #f9b43b, #eb8c38, #f9b43b);
     &__content {
         display: flex;
-        height: 400px;
+        height: 25rem;
         align-items: center;
         position: relative;
     }
@@ -19,7 +19,7 @@
     }
     &__text {
         font-family: Ubuntu;
-        font-size: 14px;
+        font-size: 0.875rem;
         font-weight: 300;
         color: $white;
     }
@@ -31,12 +31,12 @@
     &__price {
         @include title;
         color: $red;
-        padding-right: 50px;
+        padding-right: 3.125rem;
+    }
+    &__price--lower-size {
+        font-size: 1.25rem;
     }
 }
 
-.price-lower-size {
-    font-size: 20px;
-}
 
 
