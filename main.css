@@ -354,7 +354,7 @@ body {
 
 .wrapper {
   overflow: hidden;
-  min-width: 1100px;
+  min-width: 0;
 }
 
 .section {
@@ -363,7 +363,8 @@ body {
 }
 
 .container {
-  width: 940px;
+  width: auto;
+  max-width: 58.75rem;
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -402,6 +403,15 @@ p {
   margin: 0;
 }
 
+@media (max-width: 992px) {
+  html {
+    font-size: 12px;
+  }
+
+  .container {
+    max-width: 700px;
+  }
+}
 @font-face {
   font-family: "Gagalin";
   src: url("../../fonts/gagalin-regular-webfont.woff2") format("woff2"), url("../../fonts/gagalin-regular-webfont.woff") format("woff");
@@ -448,6 +458,9 @@ p {
 .hero__content {
   display: flex;
   align-items: center;
+}
+.hero__pic {
+  width: 28.1875rem;
 }
 .hero__img {
   max-width: 100%;
