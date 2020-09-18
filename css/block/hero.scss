@@ -27,3 +27,15 @@
     
 }
 
+@media (max-width:768px) {
+    .hero {
+        
+        &__content {
+            flex-direction: column;
+        }
+        &__text {
+            text-align: center;
+        }
+    }
+    
+}

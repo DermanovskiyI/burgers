@@ -4,12 +4,23 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 0.75rem;
-    .header__buttons {
+
+    &__col-right {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__buttons {
         display: flex;
         align-items: center;
     }
 }
 
+@media (max-width:768px) {
+    .navigation {
+        display: none}
+}
 
     
     
