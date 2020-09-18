@@ -29,6 +29,42 @@
     }
 }
 
+@media (max-width:768px) {
+    .navigation {
+        position: absolute;
+        background: rgba(47, 50, 52, 0.98);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: none;
+        margin-right: 0;
+        z-index: 1;
+        
+        &__list {
+            flex-direction: column;
+        }
+        &__item {
+            margin-bottom: 0;
+        }
+        &__link {
+            font-size: 1.4375rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        &__link::after {
+            width: 0.5rem;
+            height: 0.5rem;
+            margin: 1.875rem 0.625rem;
+        }
+    }
+    
+}
     
     
 

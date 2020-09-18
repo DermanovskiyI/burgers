@@ -3,6 +3,7 @@
     &__container {
         display: flex;
         flex: 0.85;
+        justify-content: center;
     }
     
     &__content {
@@ -29,6 +30,7 @@
 
 @media (max-width:768px) {
     .hero {
+        position: relative;
         
         &__content {
             flex-direction: column;

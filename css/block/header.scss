@@ -3,7 +3,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 0.75rem;
+
+    &__col-left {
+        z-index: 2;
+    }
 
     &__col-right {
         flex: 1;
@@ -18,8 +21,7 @@
 }
 
 @media (max-width:768px) {
-    .navigation {
-        display: none}
+    
 }
 
     
