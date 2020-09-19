@@ -8,6 +8,8 @@
     margin-bottom: 1.25rem;
     margin-left: 1.875rem;
     border-radius: 0.3125rem;
+    z-index: 1;
+    cursor: pointer;
     &::after {
         content: "";
         width: 1.5625rem;
@@ -17,6 +19,7 @@
         top: 100%;
         margin-top: 0.625rem;
         border-radius: 0.3125rem;
+        transition: .5s;
     }
     &::before {
         content: "";
@@ -27,6 +30,23 @@
         bottom: 100%;
         margin-bottom: 0.625rem;
         border-radius: 0.3125rem; 
+        transition: .5s;
+    }
+    &:active {
+        height: 0;
+    }
+    &:active::before {
+        margin-bottom: 0;
+        transform: rotate(135deg);
+        top: 0;
+        transition: .5s;
+        
+    }
+    &:active::after {
+        margin-top: 0;
+        transform: rotate(45deg);
+        top: 0;
+        transition: .5s;
     }  
 }
 

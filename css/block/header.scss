@@ -6,12 +6,14 @@
 
     &__col-left {
         z-index: 2;
+        margin-left: 5rem;
     }
 
     &__col-right {
         flex: 1;
         display: flex;
         justify-content: flex-end;
+        margin-right: 5rem;
     }
 
     &__buttons {
@@ -20,9 +22,7 @@
     }
 }
 
-@media (max-width:768px) {
-    
-}
+
 
     
     
