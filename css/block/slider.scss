@@ -19,14 +19,23 @@
  
  .visible-slider--left {
    top: 50%;
-   right: 110%;
+   right: 100%;
    transform: rotate(90deg);
  }
 
  
  .visible-slider--right {
    top: 50%;
-   left: 110%;
+   left: 100%;
    transform: rotate(270deg);
  }
  
+
+ @media (max-width: 768px) {
+  .visible-slider--left {
+    right: 90%;
+  }
+  .visible-slider--right {
+    left: 90%;
+  }
+}

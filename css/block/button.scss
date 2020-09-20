@@ -12,7 +12,23 @@
     outline: none;
 }
 
+.btn--black {
+    background-color: $grey;
+    &-shadow-text {
+        display: none;
+    }
+}
+
 .btn--without-bg {
     background-color: transparent;
     text-transform: capitalize;
+}
+
+@media (max-width:480px) {
+    .btn--black-visible-text {
+        display: none;
+    }
+    .btn--black-shadow-text {
+        display: inline;
+    } 
 }

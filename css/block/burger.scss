@@ -6,6 +6,7 @@
         align-items: center;
         position: relative;
     }
+    
     &__desc {
         display: flex;
         flex-direction: column;
@@ -38,5 +39,24 @@
     }
 }
 
-
+@media (max-width: 768px) {
+    .burger {
+        &__content {
+            flex-direction: column;
+            justify-content: center;
+            height: inherit;
+        }
+        &__desc {
+            align-items: center;
+            text-align: center;
+        }
+        &__title {
+            font-size: 5.5rem;
+            margin-bottom: 5.8rem;
+        }
+        &__text {
+            width: 60%;
+        }
+    }
+}
 

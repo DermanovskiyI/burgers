@@ -6,3 +6,13 @@
             margin-bottom: 2.8125rem;
     }
 }
+
+@media (max-width:480px) {
+    .order {
+        &-title {
+            margin-right: 10%;
+            margin-left: 10%;
+        }
+    }
+    
+}

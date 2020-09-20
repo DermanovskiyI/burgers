@@ -9,6 +9,7 @@
     display: flex;
     justify-content: flex-end;
     background: url('./picture/img/section_team.png') 100% 100% /cover no-repeat;
+    background-position: center;
     &-title {
         @include title;
         text-align: center;
@@ -52,6 +53,9 @@
         display: flex;
         justify-content: center;
     }
+    &__pic {
+        max-width: 100%;
+    }
     &__desc {
         flex-basis: 70%;
     }
@@ -85,4 +89,16 @@
 }
 .team__button:focus ~ .visible-button {
     border-color: transparent transparent $yellow transparent
+}
+
+
+@media (max-width:768px) {
+    .team {
+        background-position: 48%;
+    }
+}
+@media (max-width:480px) {
+    .team {
+        background-position: 44%;
+    }
 }

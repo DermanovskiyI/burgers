@@ -1,0 +1,19 @@
+.calories {
+    position: absolute;
+    top: 81%;
+    text-align: center;
+    &__text {
+        @include subtitle;
+        font-size: 0.875rem;
+        opacity: 0.5;
+        text-transform: uppercase;
+    }
+}
+
+@media (max-width: 768px) {
+    .calories {
+        bottom: 88%;
+        right: 18%;
+        top: inherit;
+    }
+}

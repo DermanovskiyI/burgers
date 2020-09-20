@@ -21,27 +21,35 @@
     }
     &__item--1 {
         background: url('./picture/img/photo-1.png') 100% 100% / cover no-repeat;
+        background-position: center;
     }
     &__item--2 {
         background: url('./picture/img/photo-2.png') 100% 100% / cover no-repeat;
+        background-position: center;
     }
     &__item--3 {
         background: url('./picture/img/photo-3.png') 100% 100% / cover no-repeat;
+        background-position: center;
     }
     &__item--4 {
         background: url('./picture/img/photo-4.png') 100% 100% / cover no-repeat;
+        background-position: center;
     }
     &__item--5 {
         background: url('./picture/img/photo-5.png') 100% 100% / cover no-repeat;
+        background-position: center;
     }
     &__item--6 {
         background: url('./picture/img/photo-6.png') 100% 100% / cover no-repeat;
+        background-position: center;
     }
     &__item--7 {
         background: url('./picture/img/photo-7.png') 100% 100% / cover no-repeat;
+        background-position: center;
     }
     &__item--8 {
         background: url('./picture/img/photo-8.png') 100% 100% / cover no-repeat;
+        background-position: center;
     }
     // top 0 left 0 right 0 bottom 0 position absolute - растягиваем блок с текстом на всю ширину и высотку родителя
     &__hover-block {
@@ -63,6 +71,7 @@
         @include title;
         font-size: 0.875rem;
         color: $white;
+        text-align: center;
     }
     &__text {
         font-family: Ubuntu;
@@ -72,6 +81,48 @@
         width: 80%;
     }
 }
-.btn--black {
-    background-color: $grey;
+
+
+@media (max-width:768px) {
+    .review {
+        &__item {
+            width: 50%;
+            height: 25%;
+        }
+        &__item--1{
+            background-position-y: 50%;
+        }
+        &__item--2{
+            background-position-y: 50%;
+        }
+        &__item--3{
+            background-position-y: 50%;
+        }
+        &__item--4{
+            background-position-y: 50%;
+        }
+        &__item--5{
+            background-position-y: 50%;
+        }
+        &__item--6{
+            background-position-y: 50%;
+        }
+        &__item--7{
+            background-position-y: 50%;
+        }
+        &__item--8{
+            background-position-y: 50%;
+        }
+    }
+}
+
+@media (max-width:480px) {
+    .review {
+        &__title {
+            font-size: 2.16rem;
+        }
+        &__text {
+            display: none;
+        }
+    }
 }

@@ -1,0 +1,89 @@
+.dropdown {
+    &__list {
+        display: none;
+        flex-direction: column;
+        width: 16.875rem;
+        background-color: $white;
+        opacity: 0.9;
+        border-radius: 0.3125rem;
+        position: absolute;
+        left: 5.4375rem;
+        top: 0;
+        padding: 1.25rem 0.9375rem 0.625rem 0.3125rem;
+        &::after {
+            // content: "";
+            width: 1.5625rem;
+            height: 0.25rem;
+            background: $orange;
+            position: absolute;
+            border-radius: 0.3125rem;
+            transform: rotate(45deg);
+            left: 90%;
+        }
+        &::before {
+            // content: "";
+            width: 1.5625rem;
+            height: 0.25rem;
+            background: $orange;
+            position: absolute;
+            border-radius: 0.3125rem;
+            transform: rotate(135deg); 
+            left: 90%;
+        }
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.625rem;
+    }
+    &__img {
+        margin: 0.6875rem;
+        flex: 1;
+    }
+    &__text {
+        display: flex;
+        flex: 4;
+        justify-content: space-between;
+        font-size: 0.875rem;
+        font-family: "Ubuntu";
+    }
+    &__close {
+        width: 1.5625rem;
+        background: $white;
+        position: relative;
+        border-radius: 0.3125rem;
+        cursor: pointer;
+        &::after {
+            content: "";
+            width: 1.5625rem;
+            height: 0.25rem;
+            background: $orange;
+            position: absolute;
+            top: 100%;
+            border-radius: 0.3125rem;
+            transform: rotate(45deg);
+        }
+        &::before {
+            content: "";
+            width: 1.5625rem;
+            height: 0.25rem;
+            background: $orange;
+            position: absolute;
+            border-radius: 0.3125rem;
+            transform: rotate(135deg); 
+        }
+    }
+}
+
+
+@media (max-width:480px) {
+    .dropdown {
+        &__list::after {
+            content: "";
+        }
+        &__list::before {
+            content: "";
+        }
+    }
+    
+}
