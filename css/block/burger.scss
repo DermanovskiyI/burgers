@@ -6,12 +6,16 @@
         align-items: center;
         position: relative;
     }
+    &__pic {
+        max-width: 100%;
+    }
     
     &__desc {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-self: stretch;
+        flex-basis: 50%;
         
     }
     &__title {
@@ -46,9 +50,12 @@
             justify-content: center;
             height: inherit;
         }
+
         &__desc {
             align-items: center;
             text-align: center;
+            flex-basis: inherit;
+            
         }
         &__title {
             font-size: 5.5rem;
