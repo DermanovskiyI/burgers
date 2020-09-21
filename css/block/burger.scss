@@ -2,10 +2,15 @@
     background-image: linear-gradient(to top, #f9b43b, #eb8c38, #f9b43b);
     &__content {
         display: flex;
-        height: 25rem;
+        height: rem(400px);
         align-items: center;
         position: relative;
     }
+
+    &__right, &__left {
+        width: 50%;
+    }
+
     &__pic {
         max-width: 100%;
     }
@@ -13,10 +18,6 @@
     &__desc {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        align-self: stretch;
-        flex-basis: 50%;
-        
     }
     &__title {
         @include title;
@@ -24,7 +25,7 @@
     }
     &__text {
         font-family: Ubuntu;
-        font-size: 0.875rem;
+        font-size: rem(14px);
         font-weight: 300;
         color: $white;
     }
@@ -36,10 +37,10 @@
     &__price {
         @include title;
         color: $red;
-        padding-right: 3.125rem;
+        padding-right: rem(50px);
     }
     &__price--lower-size {
-        font-size: 1.25rem;
+        font-size: rem(20px);
     }
 }
 
@@ -50,16 +51,18 @@
             justify-content: center;
             height: inherit;
         }
+        &__right, &__left {
+            width: inherit
+        }
 
         &__desc {
             align-items: center;
             text-align: center;
-            flex-basis: inherit;
             
         }
         &__title {
-            font-size: 5.5rem;
-            margin-bottom: 5.8rem;
+            font-size: rem(88px);
+            margin-bottom: rem(92.8px);
         }
         &__text {
             width: 60%;

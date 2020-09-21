@@ -1,5 +1,12 @@
 html {
     font-size: 16px;
+
+    @include tablets {
+        font-size: 14px;
+    }
+    @include phones {
+        font-size: 13px;
+    }
 }
 html, body {
     height: 100px;
@@ -41,6 +48,11 @@ body {
         justify-content: initial;
         width: 50%;
     }
+    @include tablets {
+        & {
+            width: 95%;
+        }
+    }
 }
 
 * {
@@ -66,23 +78,23 @@ p {
 }
 
 
-@media (max-width:1010px) {
-    html {
-        font-size: 15px;
-        // .container {max-width: 59.375rem}
-    }
-}
-@media (max-width:980px) {
-    html  {font-size: 14px}
-        // .container {max-width: 46.875rem}
+// @media (max-width:1010px) {
+//     html {
+//         font-size: 15px;
+//         // .container {max-width: 59.375rem}
+//     }
+// }
+// @media (max-width:980px) {
+//     html  {font-size: 14px}
+//         // .container {max-width: 46.875rem}
     
-}
+// }
 
-@media (max-width:919px) {
-    html {font-size: 13px}
-        // .container {max-width: 40rem}
+// @media (max-width:919px) {
+//     html {font-size: 13px}
+//         // .container {max-width: 40rem}
     
-}
+// }
 
 @media (max-width:768px) {
     html {font-size: 12px}
@@ -93,10 +105,10 @@ p {
 
     
 }
-@media (max-width:640px) {
-        html {font-size: 11px}
+// @media (max-width:640px) {
+//         html {font-size: 11px}
         
-}
+// }
 
 @media (max-width:480px) {
     html {font-size: 10px}

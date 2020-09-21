@@ -18,7 +18,20 @@ $orange: #e35028;
 }
 
 
-// адаптив
+// breakpoint
+$tablets: 768px;
+$phones: 480px;
+@mixin tablets {
+    @media (max-width:$tablets) {
+        @content;
+    }
+}
+
+@mixin phones {
+    @media (max-width:$phones) {
+        @content;
+    }
+}
 
 
 // Циклы 
@@ -36,6 +49,7 @@ $orange: #e35028;
 // layout
 @import "css/layout/layout.scss";
 @import "css/layout/fonts.scss";
+@import "css/layout/media.scss";
 
 // blocks
 @import "css/block/hero.scss";
@@ -54,3 +68,4 @@ $orange: #e35028;
 @import "css/block/review.scss";
 @import "css/block/order.scss";
 @import "css/block/form.scss";
+

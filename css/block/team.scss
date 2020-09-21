@@ -22,6 +22,8 @@
     }
     &__item {
         margin-bottom: 2.1875rem;
+        display: flex;
+        flex-direction: column;
     }
     &__dropdown {
         display: inline-flex;
@@ -43,8 +45,11 @@
         color: $white;
     }
     &__dropdown-content {
-        display: flex;
+        display: none;
         align-items: center;
+    }
+    &__dropdown-content--active {
+        display: flex;
     }
     &__avatar {
         border-radius: 50%;
@@ -95,6 +100,30 @@
 @media (max-width:768px) {
     .team {
         background-position: 48%;
+        &__content {
+            padding-left: 0;
+        }
+        &__item {
+            align-items: center;
+        }
+        &__name {
+            font-size: rem(24px);
+        }
+        &__dropdown-content--active {
+            flex-direction: column;
+        }
+        &__avatar {
+            margin-right: 0;
+        }
+        
+        &__position {
+            font-size: rem(24px);
+            text-align: center;
+        }
+        &__text {
+            font-size: rem(24px);
+            text-align: center;
+        }
     }
 }
 @media (max-width:480px) {
