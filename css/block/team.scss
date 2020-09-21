@@ -1,133 +1,127 @@
-// .team {
-//     background: url('./picture/img/section_team.png') 100% 100% /cover no-repeat;
-//     &__content {
-//         background-color: $grey;
-//         opacity: 0.93;
-//     }
-// }
 .team {
     display: flex;
     justify-content: flex-end;
     background: url('./picture/img/section_team.png') 100% 100% /cover no-repeat;
     background-position: center;
+    position: relative;
     &-title {
         @include title;
-        text-align: center;
-        margin: 3.625rem 0 2.875rem 0;   
+        margin-bottom: 12%;   
     }
-    &__content {
-        width: 50%;
-        padding-left: 9%;
-        
-    }
-    &__item {
-        margin-bottom: 2.1875rem;
+    &__container {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        background-color: rgba(#2f3234, $alpha: 0.9);
+        padding: 5% 2% 0 7%;
         display: flex;
         flex-direction: column;
-    }
-    &__dropdown {
-        display: inline-flex;
-        cursor: pointer;
-        margin-bottom: 1.25rem;
-        
-    }
-    &__button {
-        cursor: pointer;
-        margin-right: 0.625rem;
-        &:focus  .team__dropdown-content {
-            display: none;
+        align-items: center;
+        @include tablets {
+            left: 0;
+            text-align: center;
+            justify-content: center;
         }
     }
-    &__name {
-        font-family: Gagalin;
-        font-size: 0.875rem;
-        font-weight: normal;
+    &__list {
+        padding-left: 33%;
+        @include tablets {
+            padding-left: 0;
+        }
+    }
+    &__item {
+        margin-bottom: rem(40px);
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &--active {
+            .team__link {
+                color: $yellow;
+                &::before {
+                    transform: rotate(-180deg);
+                }
+            }
+          .team__content {
+              display: flex;
+          }  
+        }
+    }
+    &__link {
+        display: block;
         color: $white;
+        font-size: rem(14px);
+        font-family: Gagalin;
+        text-decoration: none;
+        position: relative;
+        margin-bottom: 1.25rem;
+        &::before, &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: rem(-18px);
+            top: rem(8px);
+            width: 0;
+            height: 0;
+        }
+        &::before {
+            border-top: rem(7px) solid $yellow;
+            border-left: rem(5px) solid transparent;
+            border-right: rem(5px) solid transparent;
+            border-bottom: rem(0px) solid transparent;
+            transform: rotate(0deg);
+            transition: .3s;
+        }
+        &::after {
+            display: none;
+            border-top: rem(7px) solid $yellow;
+            border-left: rem(5px) solid transparent;
+            border-right: rem(5px) solid transparent;
+            border-bottom: rem(0px) solid transparent;
+        }
+        @include tablets {
+            display: inline-flex;            
+        }
     }
-    &__dropdown-content {
+    &__content {
+        padding-top: rem(14px);
         display: none;
-        align-items: center;
-    }
-    &__dropdown-content--active {
-        display: flex;
+        @include tablets {
+            flex-direction: column;
+            align-items: center;
+        } 
     }
     &__avatar {
-        border-radius: 50%;
         overflow: hidden;
-        margin-right: 1.3125rem;
         display: flex;
         justify-content: center;
+        width: 30%;
+        margin-right: rem(9px);
+        @include tablets {
+            margin-bottom: rem(22px);
+        }
     }
     &__pic {
+        border-radius: 50%;
         max-width: 100%;
     }
     &__desc {
-        flex-basis: 70%;
+        width: 70%;
     }
     &__position {
         font-family: Ubuntu;
         font-size: 0.875rem;
         font-weight: 600;
         color: $white;
-        text-align: left;
-        margin-bottom: 1.5625rem;
+        margin-bottom: rem(14px);
     }
     &__text {
         font-family: Ubuntu;
         font-size: 0.875rem;
         font-weight: 300;
         color: $white;
-        text-align: left;
-    }
+    }  
+    
 }
-
-.team__button {
-    display: none;
-}
-
-.visible-button {
-    border: 0.375rem solid;
-    border-color: $yellow transparent transparent transparent;
-    width: 0;
-    height: 0;
-    margin-right: 0.625rem;
-}
-.team__button:focus ~ .visible-button {
-    border-color: transparent transparent $yellow transparent
-}
-
-
-@media (max-width:768px) {
-    .team {
-        background-position: 48%;
-        &__content {
-            padding-left: 0;
-        }
-        &__item {
-            align-items: center;
-        }
-        &__name {
-            font-size: rem(24px);
-        }
-        &__dropdown-content--active {
-            flex-direction: column;
-        }
-        &__avatar {
-            margin-right: 0;
-        }
-        
-        &__position {
-            font-size: rem(24px);
-            text-align: center;
-        }
-        &__text {
-            font-size: rem(24px);
-            text-align: center;
-        }
-    }
-}
-@media (max-width:480px) {
-    .team {
-        background-position: 44%;
-    }
-}
+    

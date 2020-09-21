@@ -41,13 +41,7 @@ body {
     &--without-align {
         justify-content: initial;
     }
-    &--right-align {
-        margin-right: 0%;
-        background-color: rgba(#2f3234, $alpha: 0.9);
-        align-items: center;
-        justify-content: initial;
-        width: 50%;
-    }
+   
     @include tablets {
         & {
             width: 95%;
@@ -98,10 +92,10 @@ p {
 
 @media (max-width:768px) {
     html {font-size: 12px}
-    .container--right-align {
-        width: 100%;
-        max-width: 100%;
-    }
+    // .container--right-align {
+    //     width: 100%;
+    //     max-width: 100%;
+    // }
 
     
 }

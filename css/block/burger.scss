@@ -2,7 +2,6 @@
     background-image: linear-gradient(to top, #f9b43b, #eb8c38, #f9b43b);
     &__content {
         display: flex;
-        height: rem(400px);
         align-items: center;
         position: relative;
     }
@@ -49,10 +48,9 @@
         &__content {
             flex-direction: column;
             justify-content: center;
-            height: inherit;
         }
         &__right, &__left {
-            width: inherit
+            width: inherit;
         }
 
         &__desc {

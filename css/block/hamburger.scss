@@ -47,9 +47,10 @@
         transform: rotate(45deg);
         top: 0;
         transition: .5s;
+    }
+    @include tablets {
+        display: flex;
     }  
 }
 
-@media (max-width:768px) {
-    .hamburger {display: flex;}
-}
+

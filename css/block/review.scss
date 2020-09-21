@@ -18,6 +18,10 @@
                 transform: scale(1);
                 transition: .5s;
         }
+        @include tablets {
+            width: 50%;
+            height: 25%;
+        }
     }
     &__item--1 {
         background: url('./picture/img/photo-1.png') 100% 100% / cover no-repeat;
@@ -72,6 +76,9 @@
         font-size: 0.875rem;
         color: $white;
         text-align: center;
+        @include phones {
+            font-size: 2.16rem;
+        }
     }
     &__text {
         font-family: Ubuntu;
@@ -79,50 +86,21 @@
         color: $white;
         font-weight: normal;
         width: 80%;
-    }
-}
-
-
-@media (max-width:768px) {
-    .review {
-        &__item {
-            width: 50%;
-            height: 25%;
-        }
-        &__item--1{
-            background-position-y: 50%;
-        }
-        &__item--2{
-            background-position-y: 50%;
-        }
-        &__item--3{
-            background-position-y: 50%;
-        }
-        &__item--4{
-            background-position-y: 50%;
-        }
-        &__item--5{
-            background-position-y: 50%;
-        }
-        &__item--6{
-            background-position-y: 50%;
-        }
-        &__item--7{
-            background-position-y: 50%;
-        }
-        &__item--8{
-            background-position-y: 50%;
-        }
-    }
-}
-
-@media (max-width:480px) {
-    .review {
-        &__title {
-            font-size: 2.16rem;
-        }
-        &__text {
+        @include phones {
             display: none;
         }
     }
 }
+
+
+
+// @media (max-width:480px) {
+//     .review {
+//         &__title {
+//             font-size: 2.16rem;
+//         }
+//         &__text {
+//             display: none;
+//         }
+//     }
+// }

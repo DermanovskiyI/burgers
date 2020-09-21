@@ -17,6 +17,14 @@
     &-shadow-text {
         display: none;
     }
+    @include phones {
+        .btn--black-visible-text {
+            display: none;
+        }
+        .btn--black-shadow-text {
+            display: inline;
+        } 
+    }
 }
 
 .btn--without-bg {
@@ -24,11 +32,3 @@
     text-transform: capitalize;
 }
 
-@media (max-width:480px) {
-    .btn--black-visible-text {
-        display: none;
-    }
-    .btn--black-shadow-text {
-        display: inline;
-    } 
-}
