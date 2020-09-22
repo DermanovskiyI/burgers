@@ -1,0 +1,21 @@
+.socials {
+    &__list {
+        display: flex;
+        align-items: center;
+    }
+    &__item {
+        margin-right: rem(20px);
+        @include phones {
+            margin-bottom: rem(18px);
+        }
+    }
+    &__logo {
+        width: rem(25px);
+        fill: #5b5b5b;
+        transition: .3s;
+        &:hover {
+            fill: $white;
+            transition: .3s;
+        }
+    }
+}

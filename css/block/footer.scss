@@ -4,4 +4,30 @@
     left: 0;
     right: 0;
     bottom: 0;
+    &__content {
+        width: auto;
+        max-width: 60.75rem;
+        height: 100%;  
+        margin: 0 auto;
+        display: flex;
+        @include phones {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    &__col-left {
+        flex: 1;
+        padding-top: rem(10px);
+        padding-left: rem(18px);
+        padding-bottom: rem(12px);
+        @include phones {
+            padding-left: initial;
+        }
+    }
+    &__col-right {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
 }

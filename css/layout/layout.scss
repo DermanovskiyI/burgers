@@ -41,6 +41,10 @@ body {
     &--without-align {
         justify-content: initial;
     }
+    &--footer {
+        flex-direction: initial;
+        justify-content: initial;
+    }
    
     @include tablets {
         & {

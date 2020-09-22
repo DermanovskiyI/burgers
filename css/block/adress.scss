@@ -1,0 +1,25 @@
+.adress {
+    font-family: Ubuntu;
+    font-size: rem(14px);
+    color: $white;
+    font-style: normal;
+    @include phones {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__text {
+        margin-bottom: rem(10px);
+    }
+    &__phone-pic {
+        width: rem(15px);
+        margin-right: rem(9px);
+    }
+    &__phone {
+        text-decoration: none;
+        color: $orange;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+}

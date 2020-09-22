@@ -1,0 +1,16 @@
+.menu {
+    background: url(./picture/img/section_menu.png)100% 100% /cover no-repeat;
+    display: flex;
+    justify-content: space-between;
+    background-position: center;
+    position: relative;
+    flex-direction: row-reverse;
+    &__title {
+        @include title;
+        color: $white;
+        left: 15%;
+        top: 4%;
+        position: absolute;
+       
+    }
+}

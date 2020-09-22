@@ -1,0 +1,11 @@
+.work {
+    background: url('./picture/img/section_work.png') 100% 100% /cover no-repeat;
+    
+    &-title {
+        text-align: center;
+        @include title;
+        color: $grey;
+        padding-top: 10%;
+        
+    }
+}
