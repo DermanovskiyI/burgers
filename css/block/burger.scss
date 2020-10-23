@@ -1,15 +1,48 @@
 .burger {
     background-image: linear-gradient(to top, #f9b43b, #eb8c38, #f9b43b);
+    &__slider {
+        overflow: hidden;
+        width: rem(915px);
+        display: flex;
+
+    }
     &__content {
+        display: flex;
+        @include tablets {
+            align-items: center;
+            width: 100%;
+        }
+     
+    }
+    &__item {
         display: flex;
         align-items: center;
         position: relative;
+        min-width: 100%;
+        @include tablets {
+            flex-direction: column;
+            justify-content: center;
+        }
     }
-
+    &__left {
+        @include tablets {
+        display: flex;
+        justify-content: center;
+        }
+    }
     &__right, &__left {
         width: 50%;
+        @include tablets {
+            width: 100%;
+        }
+        // @include phones {
+        //     width: 100%;
+        // }
     }
-
+    
+    // &__img {
+    //     text-align: center;
+    // }
     &__pic {
         max-width: 100%;
     }
@@ -36,7 +69,7 @@
     &__price {
         @include title;
         color: $red;
-        padding-right: rem(50px);
+        margin-right: rem(25px);
     }
     &__price--lower-size {
         font-size: rem(20px);
@@ -45,13 +78,7 @@
 
 @media (max-width: 768px) {
     .burger {
-        &__content {
-            flex-direction: column;
-            justify-content: center;
-        }
-        &__right, &__left {
-            width: inherit;
-        }
+        
 
         &__desc {
             align-items: center;

@@ -41,6 +41,9 @@ body {
     &--without-align {
         justify-content: initial;
     }
+    &--row {
+        flex-direction: row;
+    }
     &--footer {
         flex-direction: initial;
         justify-content: initial;

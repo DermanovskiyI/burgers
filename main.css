@@ -384,6 +384,9 @@ body {
 .container--without-align {
   justify-content: initial;
 }
+.container--row {
+  flex-direction: row;
+}
 .container--footer {
   flex-direction: initial;
   justify-content: initial;
@@ -763,13 +766,45 @@ p {
 .burger {
   background-image: linear-gradient(to top, #f9b43b, #eb8c38, #f9b43b);
 }
+.burger__slider {
+  overflow: hidden;
+  width: 57.1875rem;
+  display: flex;
+}
 .burger__content {
+  display: flex;
+}
+@media (max-width: 768px) {
+  .burger__content {
+    align-items: center;
+    width: 100%;
+  }
+}
+.burger__item {
   display: flex;
   align-items: center;
   position: relative;
+  min-width: 100%;
+}
+@media (max-width: 768px) {
+  .burger__item {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .burger__left {
+    display: flex;
+    justify-content: center;
+  }
 }
 .burger__right, .burger__left {
   width: 50%;
+}
+@media (max-width: 768px) {
+  .burger__right, .burger__left {
+    width: 100%;
+  }
 }
 .burger__pic {
   max-width: 100%;
@@ -800,20 +835,13 @@ p {
   font-size: 4.5rem;
   color: #f9b43b;
   color: #e45028;
-  padding-right: 3.125rem;
+  margin-right: 1.5625rem;
 }
 .burger__price--lower-size {
   font-size: 1.25rem;
 }
 
 @media (max-width: 768px) {
-  .burger__content {
-    flex-direction: column;
-    justify-content: center;
-  }
-  .burger__right, .burger__left {
-    width: inherit;
-  }
   .burger__desc {
     align-items: center;
     text-align: center;
@@ -828,7 +856,7 @@ p {
 }
 .consist {
   position: absolute;
-  bottom: 90%;
+  bottom: 65%;
   background-color: #f08c33;
   width: 5.625rem;
   height: 5.625rem;
@@ -944,7 +972,7 @@ p {
 }
 .calories {
   position: absolute;
-  top: 81%;
+  top: 65%;
   text-align: center;
 }
 .calories__text {
@@ -963,16 +991,16 @@ p {
     top: inherit;
   }
 }
-.scroll {
-  display: none;
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .visible-slider {
   background: url("./picture/icons/arrow-scroll.svg") center center/100% no-repeat;
   width: 1.875rem;
   height: 1.875rem;
-  position: absolute;
-  cursor: pointer;
 }
 
 .visible-slider--down {
@@ -981,14 +1009,10 @@ p {
 }
 
 .visible-slider--left {
-  top: 50%;
-  right: 100%;
   transform: rotate(90deg);
 }
 
 .visible-slider--right {
-  top: 50%;
-  left: 100%;
   transform: rotate(270deg);
 }
 
