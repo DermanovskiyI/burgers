@@ -17,7 +17,6 @@ items.style.right = currentRight;
 
 // задаем шаг.
 let step = itemWidth;
-console.log(currentRight + '+' + step + '+' + 'px')
 arrowRight.addEventListener('click', function (e) {
 e.preventDefault();
 // currentRight += step + 'px';
