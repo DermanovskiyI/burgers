@@ -8,6 +8,10 @@
     }
     &__content {
         display: flex;
+        position: relative;
+        will-change: right;
+        transition: right 0.3s;
+        min-width: 100%;
         @include tablets {
             align-items: center;
             width: 100%;

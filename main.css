@@ -773,6 +773,10 @@ p {
 }
 .burger__content {
   display: flex;
+  position: relative;
+  will-change: right;
+  transition: right 0.3s;
+  min-width: 100%;
 }
 @media (max-width: 768px) {
   .burger__content {
