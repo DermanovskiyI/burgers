@@ -1602,7 +1602,7 @@ p {
   align-items: center;
 }
 .overlay__content {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-family: "Ubuntu";
   color: #2f3234;
   background: white;
