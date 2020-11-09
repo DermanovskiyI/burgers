@@ -387,6 +387,9 @@ body {
 .container--row {
   flex-direction: row;
 }
+.container--overlay {
+  align-items: center;
+}
 .container--footer {
   flex-direction: initial;
   justify-content: initial;
@@ -543,7 +546,7 @@ p {
   align-items: center;
 }
 
-.hamburger {
+.hamburger__open {
   display: none;
   width: 1.5625rem;
   height: 0.25rem;
@@ -551,12 +554,11 @@ p {
   position: relative;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-  margin-left: 1.875rem;
   border-radius: 0.3125rem;
   z-index: 1;
   cursor: pointer;
 }
-.hamburger::after {
+.hamburger__open::after {
   content: "";
   width: 1.5625rem;
   height: 0.25rem;
@@ -567,7 +569,7 @@ p {
   border-radius: 0.3125rem;
   transition: 0.5s;
 }
-.hamburger::before {
+.hamburger__open::before {
   content: "";
   width: 1.5625rem;
   height: 0.25rem;
@@ -578,25 +580,26 @@ p {
   border-radius: 0.3125rem;
   transition: 0.5s;
 }
-.hamburger:active {
+@media (max-width: 768px) {
+  .hamburger__open {
+    display: flex;
+  }
+}
+
+.hamburger--active {
   height: 0;
 }
-.hamburger:active::before {
+.hamburger--active::before {
   margin-bottom: 0;
   transform: rotate(135deg);
   top: 0;
   transition: 0.5s;
 }
-.hamburger:active::after {
+.hamburger--active::after {
   margin-top: 0;
   transform: rotate(45deg);
   top: 0;
   transition: 0.5s;
-}
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
 }
 
 .logo {
@@ -697,6 +700,10 @@ p {
 .btn--without-bg {
   background-color: transparent;
   text-transform: capitalize;
+}
+
+.btn--with-margin {
+  margin-right: 1.875rem;
 }
 
 .best {
@@ -1578,5 +1585,45 @@ p {
 .socials__logo:hover {
   fill: #ffffff;
   transition: 0.3s;
+}
+
+.overlay {
+  color: white;
+  border-radius: 0.3125rem;
+  background: rgba(47, 50, 52, 0.93);
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  bottom: 0%;
+  right: 0%;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overlay__content {
+  font-size: 14px;
+  font-family: "Ubuntu";
+  color: #2f3234;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.3125rem;
+  padding: 1.25rem;
+  justify-content: center;
+  align-items: center;
+}
+.overlay__close {
+  width: 6.1875rem;
+  padding: 1.125rem;
+  background-color: #e35028;
+  border-radius: 0.3125rem;
+  font-size: 13px;
+  font-family: "Ubuntu";
+  color: white;
+  text-transform: uppercase;
+  margin-top: 0.3125rem;
+  display: flex;
+  justify-content: center;
 }
 /*# sourceMappingURL=main.css.map */

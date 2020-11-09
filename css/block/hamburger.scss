@@ -1,4 +1,4 @@
-.hamburger {
+.hamburger__open {
     display: none;
     width: rem(25px);
     height: rem(4px);
@@ -6,7 +6,6 @@
     position: relative;
     margin-top: rem(20px);
     margin-bottom: rem(20px);
-    margin-left: rem(30px);
     border-radius: rem(5px);
     z-index: 1;
     cursor: pointer;
@@ -32,25 +31,27 @@
         border-radius: rem(5px); 
         transition: .5s;
     }
-    &:active {
-        height: 0;
-    }
-    &:active::before {
+
+    @include tablets {
+        display: flex;
+    }  
+}
+
+.hamburger--active {
+    height: 0;
+
+    &::before {
         margin-bottom: 0;
         transform: rotate(135deg);
         top: 0;
         transition: .5s;
         
     }
-    &:active::after {
+    &::after {
         margin-top: 0;
         transform: rotate(45deg);
         top: 0;
         transition: .5s;
     }
-    @include tablets {
-        display: flex;
-    }  
 }
-
 

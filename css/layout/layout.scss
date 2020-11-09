@@ -44,6 +44,9 @@ body {
     &--row {
         flex-direction: row;
     }
+    &--overlay {
+        align-items: center;
+    }
     &--footer {
         flex-direction: initial;
         justify-content: initial;
