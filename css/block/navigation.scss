@@ -4,10 +4,23 @@
     &__list {
         display: flex;
     }
-    
-    &__item:last-child .navigation__link::after {
+    &__item {
+        display: flex;
+        align-items: center;
+    }
+    &__item::after {
+        content:"";
+        width: 0.25rem;
+        height: 0.25rem;
+        display: block;
+        border-radius: 50%;
+        background: $white;
+        margin: 0 0.625rem;
+    }
+    &__item:last-child::after{
         display: none;
     }
+    
     
     &__link {
         font-family: Ubuntu;
@@ -17,16 +30,19 @@
         text-transform: uppercase;
         display: flex;
         align-items: center;
-    
-        &::after {
-            content:"";
-            width: 0.25rem;
-            height: 0.25rem;
-            display: block;
-            border-radius: 50%;
-            background: $white;
-            margin: 0 0.625rem;
+        @media (max-width: rem(819px)) {
+            font-size: 0.71rem;
         }
+    
+        // &::after {
+        //     content:"";
+        //     width: 0.25rem;
+        //     height: 0.25rem;
+        //     display: block;
+        //     border-radius: 50%;
+        //     background: $white;
+        //     margin: 0 0.625rem;
+        // }
     }
 }
 
@@ -42,22 +58,32 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        display: none;
+        // display: none;
         margin-right: 0;
         z-index: 1;
         height: 0;
-        transition: 1s;
+        transition: .5s;
         &--active {
             display: flex;
             height: 100%;
-            transition: 1s;
+            transition: .3s;
+            & .navigation__list {
+                display: flex;
+            }
         }
         
         &__list {
+            display: none;
             flex-direction: column;
         }
         &__item {
             margin-bottom: 0;
+            flex-direction: column;
+            &::after{
+                width: 0.5rem;
+                height: 0.5rem;
+                margin: 1.875rem 0.625rem;
+            }
         }
         &__link {
             font-size: 1.4375rem;

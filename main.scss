@@ -19,8 +19,17 @@ $orange: #e35028;
 
 
 // breakpoint
+$laptop: 890px;
 $tablets: 768px;
 $phones: 480px;
+
+@mixin laptop {
+    @media(max-width:$laptop) {
+        @content;
+    }
+}
+
+
 @mixin tablets {
     @media (max-width:$tablets) {
         @content;

@@ -342,6 +342,11 @@ template {
 html {
   font-size: 16px;
 }
+@media (max-width: 890px) {
+  html {
+    font-size: 15px;
+  }
+}
 @media (max-width: 768px) {
   html {
     font-size: 14px;
@@ -616,7 +621,20 @@ p {
 .navigation__list {
   display: flex;
 }
-.navigation__item:last-child .navigation__link::after {
+.navigation__item {
+  display: flex;
+  align-items: center;
+}
+.navigation__item::after {
+  content: "";
+  width: 0.25rem;
+  height: 0.25rem;
+  display: block;
+  border-radius: 50%;
+  background: #ffffff;
+  margin: 0 0.625rem;
+}
+.navigation__item:last-child::after {
   display: none;
 }
 .navigation__link {
@@ -628,14 +646,10 @@ p {
   display: flex;
   align-items: center;
 }
-.navigation__link::after {
-  content: "";
-  width: 0.25rem;
-  height: 0.25rem;
-  display: block;
-  border-radius: 50%;
-  background: #ffffff;
-  margin: 0 0.625rem;
+@media (max-width: 51.1875rem) {
+  .navigation__link {
+    font-size: 0.71rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -650,22 +664,31 @@ p {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    display: none;
     margin-right: 0;
     z-index: 1;
     height: 0;
-    transition: 1s;
+    transition: 0.5s;
   }
   .navigation--active {
     display: flex;
     height: 100%;
-    transition: 1s;
+    transition: 0.3s;
+  }
+  .navigation--active .navigation__list {
+    display: flex;
   }
   .navigation__list {
+    display: none;
     flex-direction: column;
   }
   .navigation__item {
     margin-bottom: 0;
+    flex-direction: column;
+  }
+  .navigation__item::after {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 1.875rem 0.625rem;
   }
   .navigation__link {
     font-size: 1.4375rem;
@@ -1086,6 +1109,7 @@ p {
   text-decoration: none;
   position: relative;
   margin-bottom: 1.25rem;
+  z-index: 1;
 }
 .team__link::before, .team__link::after {
   content: "";
@@ -1118,8 +1142,9 @@ p {
   transform: rotate(-180deg);
 }
 .team__link--active ~ .team__content {
-  display: flex;
-  align-items: center;
+  opacity: 1;
+  transition: 0.5s;
+  height: initial;
 }
 @media (max-width: 768px) {
   .team__link {
@@ -1128,7 +1153,10 @@ p {
 }
 .team__content {
   padding-top: 0.875rem;
-  display: none;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  height: 0;
 }
 @media (max-width: 768px) {
   .team__content {
