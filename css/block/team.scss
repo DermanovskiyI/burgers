@@ -15,41 +15,43 @@
         bottom: 0;
         left: 50%;
         background-color: rgba(#2f3234, $alpha: 0.9);
-        padding: 5% 2% 0 7%;
+        padding: 5% 2% 0 9%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         @include tablets {
             left: 0;
             text-align: center;
             justify-content: center;
+            align-items: center;
         }
     }
     &__list {
-        padding-left: 33%;
+        // padding-left: 33%;
         @include tablets {
             padding-left: 0;
         }
+
     }
     &__item {
         margin-bottom: rem(40px);
         &:last-child {
             margin-bottom: 0;
         }
-        &--active {
-            .team__link {
-                color: $yellow;
-                &::before {
-                    transform: rotate(-180deg);
-                }
-            }
-          .team__content {
-              display: flex;
-          }  
-        }
+        // &--active {
+        //     .team__link {
+        //         color: $yellow;
+        //         &::before {
+        //             transform: rotate(-180deg);
+        //         }
+        //     }
+        //   .team__content {
+        //       display: flex;
+        //   }  
+        // }
     }
     &__link {
-        display: block;
+        // display: block;
         color: $white;
         font-size: rem(14px);
         font-family: Gagalin;
@@ -80,6 +82,18 @@
             border-right: rem(5px) solid transparent;
             border-bottom: rem(0px) solid transparent;
         }
+        &--active {
+            
+                color: $yellow;
+                &::before {
+                    transform: rotate(-180deg);
+                }
+            
+          & ~ .team__content {
+              display: flex;
+              align-items: center;
+          }  
+        }
         @include tablets {
             display: inline-flex;            
         }
@@ -96,18 +110,19 @@
         overflow: hidden;
         display: flex;
         justify-content: center;
-        width: 30%;
+        border-radius: 50%;
+        // width: 30%;
         margin-right: rem(9px);
         @include tablets {
             margin-bottom: rem(22px);
         }
     }
     &__pic {
-        border-radius: 50%;
         max-width: 100%;
     }
     &__desc {
-        width: 70%;
+        // width: 70%;
+        width: 47%;
     }
     &__position {
         font-family: Ubuntu;
@@ -124,4 +139,3 @@
     }  
     
 }
-    

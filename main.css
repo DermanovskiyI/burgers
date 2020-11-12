@@ -362,6 +362,10 @@ body {
   -moz-osx-webkit-font-smoothing: grayscale;
 }
 
+.body--active {
+  overflow: hidden;
+}
+
 .wrapper {
   overflow: hidden;
   min-width: 0;
@@ -649,6 +653,13 @@ p {
     display: none;
     margin-right: 0;
     z-index: 1;
+    height: 0;
+    transition: 1s;
+  }
+  .navigation--active {
+    display: flex;
+    height: 100%;
+    transition: 1s;
   }
   .navigation__list {
     flex-direction: column;
@@ -911,6 +922,7 @@ p {
   left: 5.7rem;
   top: 0;
   padding: 1.25rem 0.9375rem 0.625rem 0.3125rem;
+  cursor: default;
 }
 .dropdown__list::after {
   width: 1.5625rem;
@@ -1002,40 +1014,27 @@ p {
     top: inherit;
   }
 }
-.slider {
+.arrow {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
-
-.visible-slider {
+.arrow--down {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+}
+.arrow__pic {
   background: url("./picture/icons/arrow-scroll.svg") center center/100% no-repeat;
   width: 1.875rem;
   height: 1.875rem;
 }
-
-.visible-slider--down {
-  top: 90%;
-  right: 50%;
-}
-
-.visible-slider--left {
+.arrow__pic--left {
   transform: rotate(90deg);
 }
-
-.visible-slider--right {
+.arrow__pic--right {
   transform: rotate(270deg);
 }
 
-@media (max-width: 768px) {
-  .visible-slider--left {
-    right: 90%;
-  }
-
-  .visible-slider--right {
-    left: 90%;
-  }
-}
 .team {
   display: flex;
   justify-content: flex-end;
@@ -1056,20 +1055,18 @@ p {
   bottom: 0;
   left: 50%;
   background-color: rgba(47, 50, 52, 0.9);
-  padding: 5% 2% 0 7%;
+  padding: 5% 2% 0 9%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 @media (max-width: 768px) {
   .team__container {
     left: 0;
     text-align: center;
     justify-content: center;
+    align-items: center;
   }
-}
-.team__list {
-  padding-left: 33%;
 }
 @media (max-width: 768px) {
   .team__list {
@@ -1082,17 +1079,7 @@ p {
 .team__item:last-child {
   margin-bottom: 0;
 }
-.team__item--active .team__link {
-  color: #f9b43b;
-}
-.team__item--active .team__link::before {
-  transform: rotate(-180deg);
-}
-.team__item--active .team__content {
-  display: flex;
-}
 .team__link {
-  display: block;
   color: #ffffff;
   font-size: 0.875rem;
   font-family: Gagalin;
@@ -1124,6 +1111,16 @@ p {
   border-right: 0.3125rem solid transparent;
   border-bottom: 0rem solid transparent;
 }
+.team__link--active {
+  color: #f9b43b;
+}
+.team__link--active::before {
+  transform: rotate(-180deg);
+}
+.team__link--active ~ .team__content {
+  display: flex;
+  align-items: center;
+}
 @media (max-width: 768px) {
   .team__link {
     display: inline-flex;
@@ -1143,7 +1140,7 @@ p {
   overflow: hidden;
   display: flex;
   justify-content: center;
-  width: 30%;
+  border-radius: 50%;
   margin-right: 0.5625rem;
 }
 @media (max-width: 768px) {
@@ -1152,11 +1149,10 @@ p {
   }
 }
 .team__pic {
-  border-radius: 50%;
   max-width: 100%;
 }
 .team__desc {
-  width: 70%;
+  width: 47%;
 }
 .team__position {
   font-family: Ubuntu;
@@ -1195,6 +1191,16 @@ p {
 }
 .menu-acco__item {
   display: flex;
+  justify-content: flex-end;
+}
+@media (max-width: 768px) {
+  .menu-acco__item--active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
 .menu-acco__item--active .menu-acco__link-text {
   color: #f9b43b;
@@ -1202,10 +1208,30 @@ p {
 .menu-acco__item--active .menu-acco__content {
   width: 28.125rem;
   padding: 10% 5%;
+  transition: 0.5s;
 }
 @media (max-width: 768px) {
   .menu-acco__item--active .menu-acco__content {
-    width: 100%;
+    width: 38rem;
+    transition: 0.7s;
+  }
+}
+@media (max-width: 480px) {
+  .menu-acco__item--active .menu-acco__content {
+    width: 43rem;
+  }
+}
+.menu-acco__item--active .menu-acco__text {
+  opacity: 1;
+  transition: 1s;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transition-delay: 0.31s;
+}
+@media (max-width: 768px) {
+  .menu-acco__item--active .menu-acco__text {
+    transition-delay: 0.51s;
   }
 }
 .menu-acco__link {
@@ -1238,10 +1264,15 @@ p {
   width: 0;
   font-size: 14px;
   font-family: "Ubuntu";
+  width: 0;
+  padding: 0;
+  transition: 0.5s;
 }
 .menu-acco__text {
   font-size: 0.875rem;
   color: #ffffff;
+  opacity: 0;
+  transition: 0.1s;
 }
 
 .review {
@@ -1625,5 +1656,36 @@ p {
   margin-top: 0.3125rem;
   display: flex;
   justify-content: center;
+}
+
+.pagination {
+  position: fixed;
+  top: 10%;
+  left: 95%;
+}
+.pagination__link {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #ffffff;
+  position: relative;
+}
+.pagination__link--active::after {
+  content: "";
+  width: 1.25rem;
+  height: 1.25rem;
+  background: transparent;
+  position: absolute;
+  border: 0.125rem solid white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.pagination__link:last-child {
+  margin-bottom: 0;
 }
 /*# sourceMappingURL=main.css.map */

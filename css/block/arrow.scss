@@ -1,0 +1,26 @@
+.arrow {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  &--down {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+  }
+  &__pic {
+    background: url('./picture/icons/arrow-scroll.svg') center center / 100% no-repeat;
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+  &__pic--left {
+    transform: rotate(90deg);
+  }
+
+  &__pic--right {
+    transform: rotate(270deg);
+  }
+
+}
+
+ 
+

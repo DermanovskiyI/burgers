@@ -44,6 +44,8 @@ currentRight = maxRight;
 items.style.right = currentRight + 'px';
 })
 
+///////////////////////////////////////////////////////////////////////////////////////
+
 // OVERLAY ПО КНОПКЕ ЗАКАЗАТЬ
 
 let openButton = document.querySelector('#openOverlay');
@@ -54,7 +56,7 @@ let successOverlay = createOverlay("Сообщение отправлено");
 openButton.addEventListener('click', function(e) {
     e.preventDefault();
     document.body.appendChild(successOverlay);
-    body.style.overflow="hidden";
+    body.classList.add("body--active")
 })
 
 function createOverlay (content) {
@@ -82,7 +84,7 @@ function createOverlay (content) {
     closeElement.addEventListener ('click', function(e){
         e.preventDefault();
         document.body.removeChild(overlayElement);
-        body.style.overflow = "initial";
+        body.classList.remove("body--active")
     });
 
     overlayElement.appendChild(containerElement);
@@ -92,6 +94,7 @@ function createOverlay (content) {
     return overlayElement;
 }
 
+/////////////////////////////////////////////////////////////
 
 // HAMBURGER OVERLAY
 
@@ -101,29 +104,69 @@ const navigation = document.querySelector('#navigation');
 
 hamburger.addEventListener('click', function(e) {
     e.preventDefault();
-    const currentValueNavigationDisplay = window.getComputedStyle(navigation).display;
-    if (currentValueNavigationDisplay === 'none') {
-        navigation.style.display = "flex";
-        body.style.overflow = "hidden";
-        closeNavigation.classList.add("hamburger--active");
+    const isActive = navigation.classList.contains("navigation--active")
+    if (isActive) {
+        navigation.classList.remove("navigation--active")
+        body.classList.remove("body--active")
+        closeNavigation.classList.remove("hamburger--active");
     }
-    if (currentValueNavigationDisplay === 'flex') {
-            navigation.style.display = 'none';
-            body.style.overflow = "initial";
-            closeNavigation.classList.remove("hamburger--active");
+    else {
+        navigation.classList.add("navigation--active");
+        body.classList.add("body--active");
+        closeNavigation.classList.add("hamburger--active");
     }
 }
 )
     
-    
- 
-    
-    
-    
-    // console.log(window.getComputedStyle(navigation).display)
-// })
-// closeNavigation.addEventListener('click', function(e) {
+////////////////////////////////////////////////////////////////
+
+// TEAM DESCRIPTION
+
+// const teamList = document.querySelector('.team__list');
+function team (link) {
+    for (let i = 0; i < link.length; i++) {
+
+        link[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            if (link[i].classList.contains("team__link--active")) {
+                link[i].classList.remove("team__link--active");
+            } else {
+                link[i].classList.add("team__link--active");
+            }
+            
+        }) 
+    }
+}
+
+team(document.querySelectorAll('.team__link'));
+
+/////////////////////////////////////////////////////////////////
+
+
+//MENU ACCO
+
+
+function menu (link, item) {
+    for (let i = 0; i < link.length; i++) {
+        link[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            if (item[i].classList.contains("menu-acco__item--active")) {
+                item[i].classList.remove("menu-acco__item--active");
+            } else {
+                item[i].classList.add("menu-acco__item--active");
+            }
+        })
+    }
+}
+
+menu(document.querySelectorAll('.menu-acco__link'), document.querySelectorAll('.menu-acco__item'))
+
+// SCROLL DOWN
+
+// let scrollDown = document.querySelector('#down');
+
+// scrollDown.addEventListener('click', function(e) {
 //     e.preventDefault();
-//     navigation.style.display = "none";
-//     closeNavigation.classList.remove("hamburger--active");
+    
 // })
+

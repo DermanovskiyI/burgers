@@ -4,17 +4,44 @@
     // align-items: stretch;
     &__item {
         display: flex;
+        justify-content: flex-end;
+        
     }
     &__item--active {
+        @include tablets {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
         .menu-acco__link-text {
             color: $yellow;
+            
         }
         .menu-acco__content {
             width: rem(450px);
             padding: 10% 5%;
+            transition: .5s;
             @include tablets {
-                width: 100%;
-                
+                // width: 100%;
+                width: 38rem;
+                transition: .7s;
+            }
+            @include phones {
+                // width: 100%;
+                width: 43rem;
+            }
+        }
+        .menu-acco__text {
+            opacity: 1;
+            transition: 1s;
+            transition-property: all;
+            transition-duration: 1s;
+            transition-timing-function: ease;
+            transition-delay: .31s;
+            @include tablets {
+                transition-delay: .51s;
             }
         }
        
@@ -48,10 +75,15 @@
         width: 0;
         font-size: 14px;
         font-family: "Ubuntu";
+        width: 0;
+        padding: 0;
+        transition: .5s;
     }
     &__text {
         font-size: rem(14px);
         color: $white;
+        opacity: 0;
+        transition: .1s;
     }
 }  
 
