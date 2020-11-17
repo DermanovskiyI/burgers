@@ -46,53 +46,162 @@ items.style.right = currentRight + 'px';
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-// OVERLAY ПО КНОПКЕ ЗАКАЗАТЬ
+// OVERLAY ПО КНОПКЕ ЗАКАЗАТЬ (делаем через создание разметки в js)
 
-let openButton = document.querySelector('#openOverlay');
-let body = document.querySelector('body')
+// let openButton = document.querySelector('#openOverlay');
+// let body = document.querySelector('body')
 
-let successOverlay = createOverlay("Сообщение отправлено");
+// let successOverlay = createOverlay("Сообщение отправлено");
 
-openButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.body.appendChild(successOverlay);
-    body.classList.add("body--active")
-})
+// openButton.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     document.body.appendChild(successOverlay);
+//     body.classList.add("body--active")
+// })
 
-function createOverlay (content) {
-    let overlayElement = document.createElement("div");
-    overlayElement.classList.add("overlay");
-    overlayElement.addEventListener("click", function(e) {
-        if (e.target === overlayElement) {
-          closeElement.click();
-        }
-      });
+// function createOverlay (content) {
+//     let overlayElement = document.createElement("div");
+//     overlayElement.classList.add("overlay");
+//     overlayElement.addEventListener("click", function(e) {
+//         if (e.target === overlayElement) {
+//           closeElement.click();
+//         }
+//       });
    
     
 
-    let containerElement = document.createElement("div");
-    containerElement.classList.add("container", "container--overlay");
+//     let containerElement = document.createElement("div");
+//     containerElement.classList.add("container", "container--overlay");
 
-    let contentElement = document.createElement("div");
-    contentElement.classList.add("overlay__content");
-    contentElement.innerHTML = content;
+//     let contentElement = document.createElement("div");
+//     contentElement.classList.add("overlay__content");
+//     contentElement.innerHTML = content;
 
-    let closeElement = document.createElement("a");
-    closeElement.classList.add("overlay__close");
-    closeElement.href = "#";
-    closeElement.textContent = "Закрыть";
-    closeElement.addEventListener ('click', function(e){
-        e.preventDefault();
-        document.body.removeChild(overlayElement);
-        body.classList.remove("body--active")
+//     let closeElement = document.createElement("a");
+//     closeElement.classList.add("overlay__close");
+//     closeElement.href = "#";
+//     closeElement.textContent = "Закрыть";
+//     closeElement.addEventListener ('click', function(e){
+//         e.preventDefault();
+//         document.body.removeChild(overlayElement);
+//         body.classList.remove("body--active")
+//     });
+
+//     overlayElement.appendChild(containerElement);
+//     containerElement.appendChild(contentElement);
+//     contentElement.appendChild(closeElement);
+
+//     return overlayElement;
+// }
+
+
+// ВАЛИДАЦИЯ ФОРМЫ + OVERLAY + ОТПРАВКА НА СЕРВЕР
+const openButton = document.querySelector('#openOverlay');
+const body = document.querySelector('body')
+const orderForm = document.querySelector('#orderForm');
+const template = document.querySelector('#overlayTemplate').innerHTML;
+const overlay = createOverlay(template);
+let inputs = document.querySelectorAll('.form__input-elem');
+console.log(inputs[1].value)
+
+openButton.addEventListener('click', e=> {
+    e.preventDefault()
+    console.log(inputs[2].value)
+    //валидация
+    function validateForm (form) {
+        let valid = true;
+    
+        if (!validateField(form.elements.name)) {
+            valid = false;
+        }
+    
+        if (!validateField(form.elements.phone)) {
+            valid = false;
+        }
+    
+        if (!validateField(form.elements.street)) {
+            valid = false;
+        }
+    
+        if (!validateField(form.elements.home)) {
+            valid = false;
+        }
+    
+        if (!validateField(form.elements.building)) {
+            valid = false;
+        }
+    
+        if (!validateField(form.elements.apt)) {
+            valid = false;
+        }
+    
+        if (!validateField(form.elements.level)) {
+            valid = false;
+        }
+    
+        return valid;
+    }
+    
+    function validateField (field) {
+        field.nextElementSibling.textContent = field.validationMessage;
+        return field.checkValidity();
+    }
+
+    // server
+
+
+    //overlay
+
+    if (validateForm(orderForm)) {
+        overlay.open();
+        // const p = document.createTextNode('zakaz')
+        // console.log(contentElement)
+        // overlay.setContent("Заказ принят");
+        // contentElement.appendChild(p)
+        
+    }
+
+})
+function createOverlay(template) {
+    let fragment = document.createElement('div');
+
+    fragment.innerHTML = template;
+
+    const overlayElement = fragment.querySelector(".overlay");
+    const contentElement = fragment.querySelector(".overlay__content");
+    const closeElement = fragment.querySelector(".overlay__close");
+
+    fragment = null;
+    overlayElement.addEventListener('click', event => {
+        event.preventDefault();
+        if (event.target === overlayElement) {
+            closeElement.click();
+        }
     });
 
-    overlayElement.appendChild(containerElement);
-    containerElement.appendChild(contentElement);
-    contentElement.appendChild(closeElement);
+    closeElement.addEventListener('click', e => {
+        e.preventDefault();
+        document.body.removeChild(overlayElement);
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].value = '';
+        }
+    });
 
-    return overlayElement;
+    return {
+        open() {
+            document.body.appendChild(overlayElement);
+            
+        },
+        close() {
+            closeElement.click();
+            
+        },
+        // setContent(content) {
+        //     contentElement.innerHTML = content
+        // }
+    };
 }
+
 
 /////////////////////////////////////////////////////////////
 

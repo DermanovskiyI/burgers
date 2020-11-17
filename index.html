@@ -699,40 +699,47 @@
             <section class="order section" id="order">
                 <div class="container">
                     <h3 class="title order-title">Закажите доставку</h3>
-                    <form action="" method="GET" autocomplete="on" class="form">
+                    <form action="" method="GET" autocomplete="on" class="form" id="orderForm">
                         <div class="form__col-left">
                             <div class="form__row">
                                 <label class="form__input">
                                     <div class="form__name">Имя</div>
-                                    <input type="text" class="form__input-elem" placeholder="Игорь">
+                                    <input type="text" class="form__input-elem" placeholder="Игорь" name="name" required>
+                                    <div class="error"></div>
                                 </label>
                                 <label class="form__input">
                                     <div class="form__name">Телефон</div>
-                                    <input type="tel" class="form__input-elem" placeholder="+79123456789" pattern="^[ 0-9]+$">
+                                    <input type="tel" class="form__input-elem" placeholder="+79123456789" name="phone" required>
+                                    <div class="error"></div>
                                 </label>
                             </div>
                             <div class="form__row">
                                 <label class="form__input">
                                     <div class="form__name">Улица</div>
-                                    <input type="text" class="form__input-elem" placeholder="Улица">
+                                    <input type="text" class="form__input-elem" placeholder="Улица" name="street" required>
+                                    <div class="error"></div>
                                 </label>
                             </div>
                             <div class="form__row">
                                 <label class="form__input">
                                     <div class="form__name">Дом</div>
-                                    <input type="text" class="form__input-elem">
+                                    <input type="text" class="form__input-elem" name="home" required>
+                                    <div class="error"></div>
                                 </label>
                                 <label class="form__input">
                                     <div class="form__name">Корпус</div>
-                                    <input type="text" class="form__input-elem">
+                                    <input type="text" class="form__input-elem" name="building" required>
+                                    <div class="error"></div>
                                 </label>
                                 <label class="form__input">
                                     <div class="form__name">Квартира</div>
-                                    <input type="text" class="form__input-elem">
+                                    <input type="text" class="form__input-elem" name="apt" required>
+                                    <div class="error"></div>
                                 </label>
                                 <label class="form__input">
                                     <div class="form__name">Этаж</div>
-                                    <input type="text" class="form__input-elem">
+                                    <input type="text" class="form__input-elem" name="level" required>
+                                    <div class="error"></div>
                                 </label>
                             </div>
                         </div>
@@ -843,6 +850,16 @@
             </div> -->
         </div>
     </div>
+    
+    <script type="template" id="overlayTemplate">
+        <div class="overlay">
+            <div class="container container--overlay">
+                <div class="overlay__content"> Сообщение принято
+                    <a class="overlay__close" href="#">Закрыть</a>
+                </div>
+            </div>
+        </div>
+    </script>
     <script src="index.js"></script>
 </body>
 </html>

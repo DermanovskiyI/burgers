@@ -84,18 +84,15 @@
             border-bottom: rem(0px) solid transparent;
         }
         &--active {
-            
                 color: $yellow;
                 &::before {
                     transform: rotate(-180deg);
                 }
             
           & ~ .team__content {
-            //   display: flex;
-            //   align-items: center;
-            opacity: 1;
-            transition: .5s;
-            height: initial;
+            height: rem(100px);
+            margin-top: rem(14px);
+            transition: .3s;
           }  
         }
         @include tablets {
@@ -103,13 +100,11 @@
         }
     }
     &__content {
-        padding-top: rem(14px);
-        // display: none;
         display: flex;
         align-items: center;
-        opacity: 0;
-        // transition: .1s;
         height: 0;
+        overflow: hidden;
+        transition: .3s;
         @include tablets {
             flex-direction: column;
             align-items: center;

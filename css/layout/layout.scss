@@ -52,6 +52,7 @@ body {
     }
     &--overlay {
         align-items: center;
+        height: 0;
     }
     &--footer {
         flex-direction: initial;

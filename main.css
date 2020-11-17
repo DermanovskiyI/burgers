@@ -398,6 +398,7 @@ body {
 }
 .container--overlay {
   align-items: center;
+  height: 0;
 }
 .container--footer {
   flex-direction: initial;
@@ -1142,9 +1143,9 @@ p {
   transform: rotate(-180deg);
 }
 .team__link--active ~ .team__content {
-  opacity: 1;
-  transition: 0.5s;
-  height: initial;
+  height: 6.25rem;
+  margin-top: 0.875rem;
+  transition: 0.3s;
 }
 @media (max-width: 768px) {
   .team__link {
@@ -1152,11 +1153,11 @@ p {
   }
 }
 .team__content {
-  padding-top: 0.875rem;
   display: flex;
   align-items: center;
-  opacity: 0;
   height: 0;
+  overflow: hidden;
+  transition: 0.3s;
 }
 @media (max-width: 768px) {
   .team__content {
@@ -1715,5 +1716,14 @@ p {
 }
 .pagination__link:last-child {
   margin-bottom: 0;
+}
+
+.error {
+  font-family: Ubuntu;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #f9b43b;
+  font-style: italic;
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */
