@@ -397,8 +397,12 @@ body {
   flex-direction: row;
 }
 .container--overlay {
+  flex-direction: column-reverse;
   align-items: center;
-  height: 0;
+  height: initial;
+  background: white;
+  padding: 1.25rem;
+  border-radius: 5px;
 }
 .container--footer {
   flex-direction: initial;
@@ -1475,6 +1479,7 @@ p {
   width: 100%;
   padding: 0.75rem 1.3125rem;
   resize: none;
+  font-family: Ubuntu;
 }
 .form__input-elem:focus {
   outline: none;
@@ -1665,13 +1670,6 @@ p {
   font-size: 0.875rem;
   font-family: "Ubuntu";
   color: #2f3234;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  border-radius: 0.3125rem;
-  padding: 1.25rem;
-  justify-content: center;
-  align-items: center;
 }
 .overlay__close {
   width: 6.1875rem;

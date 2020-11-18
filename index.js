@@ -95,18 +95,48 @@ items.style.right = currentRight + 'px';
 // }
 
 
-// ВАЛИДАЦИЯ ФОРМЫ + OVERLAY + ОТПРАВКА НА СЕРВЕР
-const openButton = document.querySelector('#openOverlay');
+// ФОРМА: ТОЛЬКО ЦИФРЫ В ПОЛЕ "ТЕЛЕФОН" + ВАЛИДАЦИЯ + ОТПРАВКА НА СЕРВЕР + OVERLAY  
+
+//цифры в поле телефон
+
+let phoneNumber = document.querySelector('#phoneNumber');
+
+phoneNumber.addEventListener('keydown', function(event) {
+    let isDigit = false;
+    let isPlus = false;
+    let isControl = false;
+
+    if (event.key >= 0 || event.key <= 9){
+        isDigit = true;
+    }
+    if (event.key == '+') {
+        isPlus = true;
+    }
+    if (event.key == 'ArrowLeft' || event.key == 'ArrowRight' || event.key == 'Backspace') {
+        isControl = true;
+    }
+
+    if (!isDigit && !isPlus && !isControl) {
+        event.preventDefault();
+    }
+});
+
+
 const body = document.querySelector('body')
 const orderForm = document.querySelector('#orderForm');
+let inputs = document.querySelectorAll('.form__input-elem');
+
+const orderButton = document.querySelector('#orderButton');
 const template = document.querySelector('#overlayTemplate').innerHTML;
 const overlay = createOverlay(template);
-let inputs = document.querySelectorAll('.form__input-elem');
-console.log(inputs[1].value)
 
-openButton.addEventListener('click', e=> {
+const errorTemplate = document.querySelector('#overlayErrorTemplate').innerHTML;
+const errorOverlay = createOverlay(errorTemplate);
+
+
+
+orderButton.addEventListener('click', e=> {
     e.preventDefault()
-    console.log(inputs[2].value)
     //валидация
     function validateForm (form) {
         let valid = true;
@@ -119,26 +149,13 @@ openButton.addEventListener('click', e=> {
             valid = false;
         }
     
-        if (!validateField(form.elements.street)) {
+        if (!validateField(form.elements.to)) {
             valid = false;
         }
     
-        if (!validateField(form.elements.home)) {
+        if (!validateField(form.elements.comment)) {
             valid = false;
         }
-    
-        if (!validateField(form.elements.building)) {
-            valid = false;
-        }
-    
-        if (!validateField(form.elements.apt)) {
-            valid = false;
-        }
-    
-        if (!validateField(form.elements.level)) {
-            valid = false;
-        }
-    
         return valid;
     }
     
@@ -148,20 +165,39 @@ openButton.addEventListener('click', e=> {
     }
 
     // server
-
-
-    //overlay
-
     if (validateForm(orderForm)) {
-        overlay.open();
-        // const p = document.createTextNode('zakaz')
-        // console.log(contentElement)
-        // overlay.setContent("Заказ принят");
-        // contentElement.appendChild(p)
-        
-    }
+        const data = {
+            name: orderForm.elements.name.value,
+            phone: orderForm.elements.phone.value,
+            to: orderForm.elements.to.value,
+            comment: orderForm.elements.comment.value
+        };
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'json';
+        xhr.open('POST', 'https://webdev-api.loftschool.com/sendmail');
+        xhr.setRequestHeader('content-type', 'application/json');
+        xhr.send(JSON.stringify(data));
+        xhr.addEventListener('load', ()=> {
+            console.log(xhr.response.message);
+            responseStatus=xhr.response.status;
+            console.log(responseStatus)
+            //////////////// overlay
+            if (xhr.response.status === 1) {
+                overlay.open();
+                body.classList.add("body--active");
+                overlay.setContent("Заказ принят");
+                orderForm.reset();
+            }
+            else if (xhr.response.status === 0) {
+                errorOverlay.open();
+                errorOverlay.setContent('Отправить заказ не удалось, повторите запрос позже')
+            }
+        });
 
-})
+    };
+
+});
+
 function createOverlay(template) {
     let fragment = document.createElement('div');
 
@@ -171,7 +207,10 @@ function createOverlay(template) {
     const contentElement = fragment.querySelector(".overlay__content");
     const closeElement = fragment.querySelector(".overlay__close");
 
+    
+
     fragment = null;
+
     overlayElement.addEventListener('click', event => {
         event.preventDefault();
         if (event.target === overlayElement) {
@@ -179,26 +218,29 @@ function createOverlay(template) {
         }
     });
 
+
+
     closeElement.addEventListener('click', e => {
         e.preventDefault();
+        body.classList.remove("body--active");
+
         document.body.removeChild(overlayElement);
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].value = '';
-        }
+
     });
 
     return {
         open() {
-            document.body.appendChild(overlayElement);
-            
+            document.body.appendChild(overlayElement); 
         },
-        close() {
+
+        close() { 
             closeElement.click();
-            
         },
-        // setContent(content) {
-        //     contentElement.innerHTML = content
-        // }
+        
+        setContent(content) {
+            contentElement.innerHTML = content;
+  
+        }
     };
 }
 

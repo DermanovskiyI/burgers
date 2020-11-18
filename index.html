@@ -709,36 +709,36 @@
                                 </label>
                                 <label class="form__input">
                                     <div class="form__name">Телефон</div>
-                                    <input type="tel" class="form__input-elem" placeholder="+79123456789" name="phone" required>
+                                    <input type="tel" class="form__input-elem" placeholder="+79123456789" name="phone" id="phoneNumber" required>
                                     <div class="error"></div>
                                 </label>
                             </div>
                             <div class="form__row">
                                 <label class="form__input">
-                                    <div class="form__name">Улица</div>
-                                    <input type="text" class="form__input-elem" placeholder="Улица" name="street" required>
+                                    <div class="form__name">Электронная почта</div>
+                                    <input type="email" class="form__input-elem" placeholder="example@mail.com" name="to" required >
                                     <div class="error"></div>
                                 </label>
                             </div>
                             <div class="form__row">
                                 <label class="form__input">
                                     <div class="form__name">Дом</div>
-                                    <input type="text" class="form__input-elem" name="home" required>
+                                    <input type="text" class="form__input-elem" name="house">
                                     <div class="error"></div>
                                 </label>
                                 <label class="form__input">
                                     <div class="form__name">Корпус</div>
-                                    <input type="text" class="form__input-elem" name="building" required>
+                                    <input type="text" class="form__input-elem" name="building" >
                                     <div class="error"></div>
                                 </label>
                                 <label class="form__input">
                                     <div class="form__name">Квартира</div>
-                                    <input type="text" class="form__input-elem" name="apt" required>
+                                    <input type="text" class="form__input-elem" name="apt" >
                                     <div class="error"></div>
                                 </label>
                                 <label class="form__input">
                                     <div class="form__name">Этаж</div>
-                                    <input type="text" class="form__input-elem" name="level" required>
+                                    <input type="text" class="form__input-elem" name="level" >
                                     <div class="error"></div>
                                 </label>
                             </div>
@@ -747,7 +747,8 @@
                             <div class="form__row">
                                 <label class="form__input form__input--without-margin">
                                     <div class="form__name">Комментарии</div>
-                                    <textarea class="form__input-elem form__input-elem--padding"></textarea>
+                                    <textarea class="form__input-elem form__input-elem--padding" name="comment" required></textarea>
+                                    <div class="error"></div>
                                 </label>
                             </div>
                             <div class="form__controlls">
@@ -770,7 +771,7 @@
                                 </label>
                             </div>
                             <div class="form__btn">
-                                <a href="#" id="openOverlay" class="btn">Заказать</a>
+                                <a href="#" id="orderButton" class="btn">Заказать</a>
                                 <button type="reset" href="#" class="btn btn--without-bg">Очистить</button>
                             </div>
                         </div>
@@ -854,9 +855,16 @@
     <script type="template" id="overlayTemplate">
         <div class="overlay">
             <div class="container container--overlay">
-                <div class="overlay__content"> Сообщение принято
-                    <a class="overlay__close" href="#">Закрыть</a>
-                </div>
+                <a class="overlay__close" href="#">Закрыть</a>
+                <div class="overlay__content"></div>
+            </div>
+        </div>
+    </script>
+    <script type="template" id="overlayErrorTemplate">
+        <div class="overlay">
+            <div class="container container--overlay">
+                <a class="overlay__close" href="#">Закрыть</a>
+                <div class="overlay__content"></div>
             </div>
         </div>
     </script>

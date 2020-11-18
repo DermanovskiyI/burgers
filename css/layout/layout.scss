@@ -51,8 +51,12 @@ body {
         flex-direction: row;
     }
     &--overlay {
+        flex-direction: column-reverse;
         align-items: center;
-        height: 0;
+        height: initial;
+        background: white;
+        padding: 1.25rem;
+        border-radius: 5px;
     }
     &--footer {
         flex-direction: initial;
