@@ -301,18 +301,25 @@ let teamAcco = document.querySelector('#teamAcco');
 createTeamAcco (teamAcco);
 
 function createTeamAcco (accordeon) {
-    let activeClass;
+    // let activeClass;
     accordeon.addEventListener('click', function (e) {
         if (e.target.classList.contains("team__link")) {
             let links = e.target;
+            let isActive = links.classList.contains("team__link--active");
             e.preventDefault();
 
-            if (activeClass) {
-                activeClass.classList.remove("team__link--active");
+            if (isActive) {
+                links.classList.remove("team__link--active");
+            }
+            else {
+                const activeItem = document.querySelector('.team__link--active'); 
+                if (activeItem) {
+                    activeItem.classList.remove('team__link--active');
+                }
+                links.classList.add("team__link--active"); 
             }
 
-            activeClass = links;
-            activeClass.classList.add("team__link--active");  
+             
 
         }
     })
@@ -355,27 +362,26 @@ createMenuAcco(menuAcco);
 
 
 function createMenuAcco (element) {
-    let activeClass;
     element.addEventListener('click', function(e) {
-        if(e.target.classList.contains('menu-acco__link')) {
-
-            const item = e.target;
-
+        const item = e.target.closest('.menu-acco__item')
+        const activeClass = item.classList.contains("menu-acco__item--active");
+        e.preventDefault()
             if (activeClass) {
-                activeClass.classList.remove("menu-acco__item--active");
+                item.classList.remove("menu-acco__item--active");
             } 
-
-
-            activeClass = item.parentElement;
-            activeClass.classList.add("menu-acco__item--active");
-
-            
-        };
+            else {
+                // ищем активный элемент, если он существует
+                const activeItem = document.querySelector('.menu-acco__item--active'); 
+                if (activeItem) {
+                    activeItem.classList.remove('menu-acco__item--active');
+                }
+                item.classList.add("menu-acco__item--active");
+            }
         
-    });
+    }); 
 };
 
-////////3 способ, можно закрыть все три
+//////3 способ, можно закрыть все три
 // let menuAcco = document.querySelector('#menuAcco');
 // createMenuAcco(menuAcco);
 
@@ -386,19 +392,15 @@ function createMenuAcco (element) {
 //         if(e.target.classList.contains('menu-acco__link')) {
 
 //             const item = e.target;
-
 //             if (activeClass) {
 //                 activeClass.classList.remove("menu-acco__item--active");
 //                 activeClass="";
 //             } 
-
 //             else {
 //                 activeClass = item.parentElement;
 //                 activeClass.classList.add("menu-acco__item--active");
 //             }
-
 //         };
-        
 //     });
 // };
 

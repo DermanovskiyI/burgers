@@ -1284,7 +1284,7 @@ p {
 }
 @media (max-width: 480px) {
   .menu-acco__item--active .menu-acco__content {
-    width: 100%;
+    width: 33rem;
   }
 }
 .menu-acco__item--active .menu-acco__text {
