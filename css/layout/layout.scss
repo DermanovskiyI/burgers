@@ -44,6 +44,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @include tablets {
+        & {
+            width: 95%;
+        }
+    }
     &--without-align {
         justify-content: initial;
     }
@@ -57,17 +62,23 @@ body {
         background: white;
         padding: 1.25rem;
         border-radius: 5px;
+        width: auto;
+    }
+    &--overlay--reviews {
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: initial;
+        background: white;
+        padding: 1.25rem;
+        border-radius: 5px;
+        width: 28.75rem;
     }
     &--footer {
         flex-direction: initial;
         justify-content: initial;
     }
    
-    @include tablets {
-        & {
-            width: 95%;
-        }
-    }
+    
 }
 
 * {

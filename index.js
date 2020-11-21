@@ -205,6 +205,7 @@ function createOverlay(template) {
 
     const overlayElement = fragment.querySelector(".overlay");
     const contentElement = fragment.querySelector(".overlay__content");
+    const titleElement = fragment.querySelector(".overlay__title");
     const closeElement = fragment.querySelector(".overlay__close");
 
     
@@ -240,6 +241,9 @@ function createOverlay(template) {
         setContent(content) {
             contentElement.innerHTML = content;
   
+        },
+        setTitle(title) {
+            titleElement.textContent = title;
         }
     };
 }
@@ -274,43 +278,159 @@ hamburger.addEventListener('click', function(e) {
 // TEAM DESCRIPTION
 
 // const teamList = document.querySelector('.team__list');
-function team (link) {
-    for (let i = 0; i < link.length; i++) {
+// function team (link) {
+//     for (let i = 0; i < link.length; i++) {
 
-        link[i].addEventListener('click', function(e) {
-            e.preventDefault();
-            if (link[i].classList.contains("team__link--active")) {
-                link[i].classList.remove("team__link--active");
-            } else {
-                link[i].classList.add("team__link--active");
-            }
+//         link[i].addEventListener('click', function(e) {
+//             e.preventDefault();
+//             if (link[i].classList.contains("team__link--active")) {
+//                 link[i].classList.remove("team__link--active");
+//             } else {
+//                 link[i].classList.add("team__link--active");
+//             }
             
-        }) 
-    }
+//         }) 
+//     }
+// }
+
+// team(document.querySelectorAll('.team__link'));
+
+
+let teamAcco = document.querySelector('#teamAcco');
+
+createTeamAcco (teamAcco);
+
+function createTeamAcco (accordeon) {
+    let activeClass;
+    accordeon.addEventListener('click', function (e) {
+        if (e.target.classList.contains("team__link")) {
+            let links = e.target;
+            e.preventDefault();
+
+            if (activeClass) {
+                activeClass.classList.remove("team__link--active");
+            }
+
+            activeClass = links;
+            activeClass.classList.add("team__link--active");  
+
+        }
+    })
 }
 
-team(document.querySelectorAll('.team__link'));
 
 /////////////////////////////////////////////////////////////////
 
 
 //MENU ACCO
 
+/// 1 способ
 
-function menu (link, item) {
-    for (let i = 0; i < link.length; i++) {
-        link[i].addEventListener('click', function(e) {
+// let accoLinks = document.querySelectorAll('.menu-acco__link');
+// let accoItems = document.querySelectorAll('.menu-acco__item');
+
+// menu(accoLinks, accoItems)
+
+// function menu (links, items) {
+//     for (let i = 0; i < links.length; i++) {
+//         let link = links[i];
+//         let item = items[i]
+//         link.addEventListener('click', function(e) {
+//             e.preventDefault();
+//             if (item.classList.contains("menu-acco__item--active")) {
+//                 item.classList.remove("menu-acco__item--active");
+//             } else {
+//                 item.classList.add("menu-acco__item--active");
+//             }
+//         })
+//     }
+// }
+
+
+/// 2 способ ДЕЛЕГИРОВАНИЕ
+
+
+let menuAcco = document.querySelector('#menuAcco');
+createMenuAcco(menuAcco);
+
+
+function createMenuAcco (element) {
+    let activeClass;
+    element.addEventListener('click', function(e) {
+        if(e.target.classList.contains('menu-acco__link')) {
+
+            const item = e.target;
+
+            if (activeClass) {
+                activeClass.classList.remove("menu-acco__item--active");
+            } 
+
+
+            activeClass = item.parentElement;
+            activeClass.classList.add("menu-acco__item--active");
+
+            
+        };
+        
+    });
+};
+
+////////3 способ, можно закрыть все три
+// let menuAcco = document.querySelector('#menuAcco');
+// createMenuAcco(menuAcco);
+
+
+// function createMenuAcco (element) {
+//     let activeClass;
+//     element.addEventListener('click', function(e) {
+//         if(e.target.classList.contains('menu-acco__link')) {
+
+//             const item = e.target;
+
+//             if (activeClass) {
+//                 activeClass.classList.remove("menu-acco__item--active");
+//                 activeClass="";
+//             } 
+
+//             else {
+//                 activeClass = item.parentElement;
+//                 activeClass.classList.add("menu-acco__item--active");
+//             }
+
+//         };
+        
+//     });
+// };
+
+
+/////////////////////////// REVIEWS POPUP
+let reviewPopup = document.querySelector('#reviewPopup');
+const reviewTemplate = document.querySelector('#overlayReviewTemplate').innerHTML;
+const reviewOverlay = createOverlay(reviewTemplate);
+
+createReviewPopup(reviewPopup);
+
+function createReviewPopup (element) {
+    let reviewContent;
+    let reviewTitle;
+    element.addEventListener('click', function(e){
+        if (e.target.classList.contains('btn--black')) {
             e.preventDefault();
-            if (item[i].classList.contains("menu-acco__item--active")) {
-                item[i].classList.remove("menu-acco__item--active");
-            } else {
-                item[i].classList.add("menu-acco__item--active");
-            }
-        })
-    }
+            let btnReview = e.target; 
+            reviewContent = btnReview.previousElementSibling;
+            reviewTitle =  reviewContent.previousElementSibling;
+            reviewOverlay.open();
+            body.classList.add("body--active");
+            reviewOverlay.setContent(reviewContent.textContent);
+            reviewOverlay.setTitle(reviewTitle.textContent)
+
+        }
+    })
 }
 
-menu(document.querySelectorAll('.menu-acco__link'), document.querySelectorAll('.menu-acco__item'))
+
+
+
 
 // SCROLL DOWN
 

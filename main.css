@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -390,6 +391,11 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+}
 .container--without-align {
   justify-content: initial;
 }
@@ -403,15 +409,20 @@ body {
   background: white;
   padding: 1.25rem;
   border-radius: 5px;
+  width: auto;
+}
+.container--overlay--reviews {
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: initial;
+  background: white;
+  padding: 1.25rem;
+  border-radius: 5px;
+  width: 28.75rem;
 }
 .container--footer {
   flex-direction: initial;
   justify-content: initial;
-}
-@media (max-width: 768px) {
-  .container {
-    width: 95%;
-  }
 }
 
 * {
@@ -724,15 +735,12 @@ p {
 .btn--black {
   background-color: #2f3234;
 }
-.btn--black-shadow-text {
-  display: none;
+.btn--black::before {
+  content: "Подробнее";
 }
 @media (max-width: 480px) {
-  .btn--black .btn--black-visible-text {
-    display: none;
-  }
-  .btn--black .btn--black-shadow-text {
-    display: inline;
+  .btn--black::before {
+    content: "Читать отзыв";
   }
 }
 
@@ -1023,8 +1031,30 @@ p {
 }
 .calories {
   position: absolute;
-  top: 65%;
+  bottom: 23%;
+  width: 5.625rem;
+  height: 5.625rem;
   text-align: center;
+}
+@media (max-width: 768px) {
+  .calories {
+    bottom: 100%;
+    right: 18%;
+    top: inherit;
+  }
+}
+.calories-pic__text {
+  position: absolute;
+  font-family: Gagalin;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  color: rgba(255, 255, 255, 0.502);
+  font-size: 1.25rem;
+}
+.calories__img {
+  opacity: 0.5;
+  max-width: 77%;
 }
 .calories__text {
   font-family: lifehack;
@@ -1035,13 +1065,6 @@ p {
   text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
-  .calories {
-    bottom: 99%;
-    right: 18%;
-    top: inherit;
-  }
-}
 .arrow {
   display: flex;
   align-items: center;
@@ -1147,9 +1170,14 @@ p {
   transform: rotate(-180deg);
 }
 .team__link--active ~ .team__content {
-  height: 6.25rem;
+  height: 7.5rem;
   margin-top: 0.875rem;
   transition: 0.3s;
+}
+@media (max-width: 768px) {
+  .team__link--active ~ .team__content {
+    height: 15.625rem;
+  }
 }
 @media (max-width: 768px) {
   .team__link {
@@ -1218,6 +1246,12 @@ p {
   top: 4%;
   position: absolute;
 }
+@media (max-width: 768px) {
+  .menu__title {
+    left: 2%;
+    font-size: 3.5rem;
+  }
+}
 
 .menu-acco {
   display: flex;
@@ -1228,7 +1262,6 @@ p {
 }
 @media (max-width: 768px) {
   .menu-acco__item--active {
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -1251,7 +1284,7 @@ p {
 }
 @media (max-width: 480px) {
   .menu-acco__item--active .menu-acco__content {
-    width: 43rem;
+    width: 100%;
   }
 }
 .menu-acco__item--active .menu-acco__text {
@@ -1276,6 +1309,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  cursor: pointer;
 }
 .menu-acco__link-text {
   font-family: Gagalin;
@@ -1666,10 +1700,19 @@ p {
   justify-content: center;
   align-items: center;
 }
+.overlay__title {
+  font-family: Gagalin;
+  font-size: 14px;
+  color: #2f3234;
+  position: relative;
+  margin-bottom: 2.1875rem;
+  flex: 1;
+}
 .overlay__content {
   font-size: 0.875rem;
   font-family: "Ubuntu";
   color: #2f3234;
+  line-height: 1.714;
 }
 .overlay__close {
   width: 6.1875rem;
@@ -1683,6 +1726,17 @@ p {
   margin-top: 0.3125rem;
   display: flex;
   justify-content: center;
+}
+.overlay__close--review {
+  width: initial;
+  padding: initial;
+  background-color: initial;
+  margin-top: initial;
+  background-image: url(/picture/img/close.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 0.9375rem;
+  width: 0.9375rem;
 }
 
 .pagination {

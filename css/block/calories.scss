@@ -1,7 +1,27 @@
 .calories {
     position: absolute;
-    top: 65%;
+    bottom: 23%;
+    width: 5.625rem;
+    height: 5.625rem;
     text-align: center;
+    @include tablets {
+        bottom: 100%;
+        right: 18%;
+        top: inherit;
+    }
+    &-pic__text {
+        position: absolute;
+        font-family: Gagalin;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        color: rgba(255, 255, 255, 0.502);
+        font-size: rem(20px);
+    }
+    &__img {
+        opacity: .5;
+        max-width: 77%;
+    }
     &__text {
         @include subtitle;
         font-size: 0.875rem;
@@ -10,10 +30,3 @@
     }
 }
 
-@media (max-width: 768px) {
-    .calories {
-        bottom: 99%;
-        right: 18%;
-        top: inherit;
-    }
-}

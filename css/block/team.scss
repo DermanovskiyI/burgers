@@ -90,9 +90,12 @@
                 }
             
           & ~ .team__content {
-            height: rem(100px);
+            height: rem(120px);
             margin-top: rem(14px);
             transition: .3s;
+            @include tablets {
+                height: rem(250px);
+            }
           }  
         }
         @include tablets {

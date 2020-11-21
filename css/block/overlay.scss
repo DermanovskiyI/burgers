@@ -1,6 +1,4 @@
 .overlay {
-    // width: rem(200px);
-    // height: rem(105px);
     color:white;
     border-radius: rem(5px);
     background: rgba(47, 50, 52, 0.93);
@@ -14,17 +12,20 @@
     justify-content: center;
     align-items: center;
 
+    &__title {
+        font-family: Gagalin;
+        font-size: 14px;
+        color: rgb(47, 50, 52);
+        position: relative;
+        margin-bottom: rem(35px);
+        flex: 1;
+    }
+
     &__content {
         font-size: rem(14px);
         font-family: "Ubuntu";
         color: rgb(47, 50, 52);
-        // background: white;
-        // display: flex;
-        // flex-direction: column;
-        // border-radius: rem(5px);
-        // padding: rem(20px);
-        // justify-content: center;
-        // align-items: center;
+        line-height: 1.714;
     }
     
     &__close {
@@ -40,4 +41,17 @@
         display: flex;
         justify-content: center;
     }
+    &__close--review {
+        width: initial;;
+        padding: initial;;
+        background-color: initial;
+        margin-top: initial;
+        background-image: url(/picture/img/close.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        height: rem(15px);
+        width: rem(15px);
+    
+    }
+
 }

@@ -14,17 +14,17 @@
 
 .btn--black {
     background-color: $grey;
-    &-shadow-text {
-        display: none;
+    
+    &::before {
+        content: "Подробнее";
     }
     @include phones {
-        .btn--black-visible-text {
-            display: none;
+        &::before {
+        content: "Читать отзыв";
         }
-        .btn--black-shadow-text {
-            display: inline;
-        } 
+        
     }
+
 }
 
 .btn--without-bg {

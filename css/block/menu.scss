@@ -11,6 +11,9 @@
         left: 15%;
         top: 4%;
         position: absolute;
-       
+       @include tablets {
+        left: 2%;
+        font-size: 3.5rem;
+       }
     }
 }

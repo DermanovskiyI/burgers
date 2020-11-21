@@ -9,7 +9,7 @@
     }
     &__item--active {
         @include tablets {
-            position: absolute;
+            // position: absolute;
             top: 0;
             left: 0;
             right: 0;
@@ -29,8 +29,8 @@
                 transition: .7s;
             }
             @include phones {
-                // width: 100%;
-                width: 43rem;
+                width: 100%;
+                // width: 43rem;
             }
         }
         .menu-acco__text {
@@ -55,6 +55,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        cursor: pointer;
         
     }
     &__link-text {
