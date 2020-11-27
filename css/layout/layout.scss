@@ -12,7 +12,7 @@ html {
     }
 }
 html, body {
-    height: 100px;
+    height: 100%;
 }
 // сглаживание шрифтов
 body {
@@ -26,6 +26,14 @@ body {
 .wrapper {
     overflow: hidden;
     min-width: 0;
+    height: 100%;
+    width: 100%;
+}
+//one page scroll. убираем скролл с сайта
+.maincontent {
+    height: 100%;
+    transform: translateY(0);
+    transition: transform 1s;
 }
 
 // высота 100%  от высоты окна//

@@ -432,14 +432,85 @@ function createReviewPopup (element) {
 
 
 
+///////// ONE PAGE SCROLL
+
+let sections = document.querySelectorAll('.section');
+// console.log(sections.length)
+let display = document.querySelector('.maincontent')
+let indexActiveSection;
+let toNextSection;
+let toPrevSection;
 
 
-// SCROLL DOWN
 
-// let scrollDown = document.querySelector('#down');
+function changeClassDown() {
+let activeSection=document.querySelector('.active');
+if (activeSection.nextElementSibling.classList.contains('section')) {
+activeSection.classList.remove('active')
+activeSection = activeSection.nextElementSibling;
+activeSection.classList.add('active');
+}
 
-// scrollDown.addEventListener('click', function(e) {
-//     e.preventDefault();
-    
-// })
+};
 
+function changeClassUp () {
+
+let activeSection=document.querySelector('.active');
+if (activeSection.previousElementSibling != null) {
+activeSection.classList.remove('active');
+activeSection = activeSection.previousElementSibling;
+activeSection.classList.add('active');
+}
+
+};
+function scrolling () {
+// let indexActiveSection;
+// let toNextSection;
+// let toPrevSection;
+
+for (i = 0; i < sections.length; i++) {
+if (sections[i].classList.contains('active')) {
+indexActiveSection = i;
+}
+
+}
+toNextSection = (indexActiveSection + 1) * -100 + '%';
+toPrevSection = (indexActiveSection - 1) * -100 + '%';
+// console.log(indexActiveSection)
+
+// return toNextSection;
+}
+
+document.addEventListener('wheel', function (e) {
+
+
+scrolling();
+let deltaY = e.deltaY;
+
+if (deltaY > 0 && indexActiveSection < sections.length-1) {
+
+display.style.transform=`translateY(${toNextSection})`;
+changeClassDown();
+}
+
+if (deltaY < 0 && indexActiveSection > 0) {
+display.style.transform=`translateY(${toPrevSection})`;
+changeClassUp();
+};
+})
+
+/////// TO ORDER SECTION
+
+const toOrderSectionButton = document.querySelector('#toOrderSection');
+const orderSection = document.querySelector('#order')
+toOrderSectionButton.addEventListener('click', function(e) {
+e.preventDefault();
+let activeSection = document.querySelector('.active')
+// console.log(activeSection)
+if (activeSection) {
+activeSection.classList.remove('active');
+}
+orderSection.classList.add('active');
+display.style.transform = 'translateY(-700%)';
+
+})
