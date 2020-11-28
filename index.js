@@ -430,36 +430,38 @@ function updateClass(activeSection, newSection, coords) {
 }
 
 document.addEventListener("wheel", function (e) {
-  const activeSection = document.querySelector(".section.active");
-  const activeIndex = parseInt(activeSection.dataset.index);
+  if (!body.classList.contains("body--active")) {
+    const activeSection = document.querySelector(".section.active");
+    const activeIndex = parseInt(activeSection.dataset.index);
 
-  const nextSection = toNextSection(activeIndex);
-  const prevSection = toPrevSection(activeIndex);
+    const isDirectionDown = e.deltaY > 0;
 
-  const isDirectionDown = e.deltaY > 0;
+    if (isDirectionDown && activeIndex < lastIndex) {
+      const nextElement = activeSection.nextElementSibling;
+      const nextSection = toNextSection(activeIndex);
+      updateClass(activeSection, nextElement, nextSection);
+    }
 
-  if (isDirectionDown && activeIndex < lastIndex) {
-    const nextElement = activeSection.nextElementSibling;
-    updateClass(activeSection, nextElement, nextSection);
-  }
-
-  if (!isDirectionDown && activeIndex > 0) {
-    const prevElement = activeSection.previousElementSibling;
-    updateClass(activeSection, prevElement, prevSection);
+    if (!isDirectionDown && activeIndex > 0) {
+      const prevElement = activeSection.previousElementSibling;
+      const prevSection = toPrevSection(activeIndex);
+      updateClass(activeSection, prevElement, prevSection);
+    }
   }
 });
 
 /////// TO ORDER SECTION
 
-const toOrderSectionButton = document.querySelector("#toOrderSection");
-const orderSection = document.querySelector("#order");
+const toOrderSectionButton = document.getElementById("toOrderSection");
+const orderSection = document.getElementById("order");
 toOrderSectionButton.addEventListener("click", function (e) {
   e.preventDefault();
-  let activeSection = document.querySelector(".active");
-  // console.log(activeSection)
-  if (activeSection) {
-    activeSection.classList.remove("active");
-  }
-  orderSection.classList.add("active");
-  display.style.transform = "translateY(-700%)";
+  const orderSection = document.querySelector(".order.section");
+  const indexOrderSection = parseInt(orderSection.dataset.index);
+
+  //   нам нужен индекс предыдущего элемента
+  const newCoords = toNextSection(indexOrderSection - 1);
+
+  let activeSection = document.querySelector(".section.active");
+  updateClass(activeSection, orderSection, newCoords);
 });
