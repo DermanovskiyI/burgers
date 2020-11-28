@@ -1,13 +1,13 @@
 //SLIDER
 
 // получаем элементы.
-let arrowLeft = document.querySelector('#prev');
-let arrowRight = document.querySelector('#next');
-let items = document.querySelector('#items');
-let item = document.querySelector('.burger__item');
+let arrowLeft = document.querySelector("#prev");
+let arrowRight = document.querySelector("#next");
+let items = document.querySelector("#items");
+let item = document.querySelector(".burger__item");
 
-let itemWidth = parseInt(window.getComputedStyle(item).width);//получаем ширину одного item для установления максимальных сдвигов.
-let itemLength = items.children.length - 1;//получаем общее количество item для установления максимальных сдвигов. т.к. нам нужно будет чтобы всегда был один элемент на странице добавим -1.
+let itemWidth = parseInt(window.getComputedStyle(item).width); //получаем ширину одного item для установления максимальных сдвигов.
+let itemLength = items.children.length - 1; //получаем общее количество item для установления максимальных сдвигов. т.к. нам нужно будет чтобы всегда был один элемент на странице добавим -1.
 
 //задаем максимальное и минимальное значение для смещения вправо и влево.
 let minRight = 0;
@@ -19,30 +19,26 @@ items.style.right = currentRight;
 
 // задаем шаг.
 let step = itemWidth;
-arrowRight.addEventListener('click', function (e) {
-e.preventDefault();
-// currentRight += step + 'px';
-if (currentRight < maxRight) {
-currentRight += step;
-}
-else {
-currentRight = minRight;
-}
-items.style.right = currentRight + 'px';
+arrowRight.addEventListener("click", function (e) {
+  e.preventDefault();
+  // currentRight += step + 'px';
+  if (currentRight < maxRight) {
+    currentRight += step;
+  } else {
+    currentRight = minRight;
+  }
+  items.style.right = currentRight + "px";
+});
 
-
-})
-
-arrowLeft.addEventListener('click', function (e) {
-e.preventDefault();
-if (currentRight > minRight) {
-currentRight -= step;
-}
-else {
-currentRight = maxRight;
-}
-items.style.right = currentRight + 'px';
-})
+arrowLeft.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (currentRight > minRight) {
+    currentRight -= step;
+  } else {
+    currentRight = maxRight;
+  }
+  items.style.right = currentRight + "px";
+});
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -67,8 +63,6 @@ items.style.right = currentRight + 'px';
 //           closeElement.click();
 //         }
 //       });
-   
-    
 
 //     let containerElement = document.createElement("div");
 //     containerElement.classList.add("container", "container--overlay");
@@ -94,185 +88,175 @@ items.style.right = currentRight + 'px';
 //     return overlayElement;
 // }
 
-
-// ФОРМА: ТОЛЬКО ЦИФРЫ В ПОЛЕ "ТЕЛЕФОН" + ВАЛИДАЦИЯ + ОТПРАВКА НА СЕРВЕР + OVERLAY  
+// ФОРМА: ТОЛЬКО ЦИФРЫ В ПОЛЕ "ТЕЛЕФОН" + ВАЛИДАЦИЯ + ОТПРАВКА НА СЕРВЕР + OVERLAY
 
 //цифры в поле телефон
 
-let phoneNumber = document.querySelector('#phoneNumber');
+let phoneNumber = document.querySelector("#phoneNumber");
 
-phoneNumber.addEventListener('keydown', function(event) {
-    let isDigit = false;
-    let isPlus = false;
-    let isControl = false;
+phoneNumber.addEventListener("keydown", function (event) {
+  let isDigit = false;
+  let isPlus = false;
+  let isControl = false;
 
-    if (event.key >= 0 || event.key <= 9){
-        isDigit = true;
-    }
-    if (event.key == '+') {
-        isPlus = true;
-    }
-    if (event.key == 'ArrowLeft' || event.key == 'ArrowRight' || event.key == 'Backspace') {
-        isControl = true;
-    }
+  if (event.key >= 0 || event.key <= 9) {
+    isDigit = true;
+  }
+  if (event.key == "+") {
+    isPlus = true;
+  }
+  if (
+    event.key == "ArrowLeft" ||
+    event.key == "ArrowRight" ||
+    event.key == "Backspace"
+  ) {
+    isControl = true;
+  }
 
-    if (!isDigit && !isPlus && !isControl) {
-        event.preventDefault();
-    }
+  if (!isDigit && !isPlus && !isControl) {
+    event.preventDefault();
+  }
 });
 
+const body = document.querySelector("body");
+const orderForm = document.querySelector("#orderForm");
+let inputs = document.querySelectorAll(".form__input-elem");
 
-const body = document.querySelector('body')
-const orderForm = document.querySelector('#orderForm');
-let inputs = document.querySelectorAll('.form__input-elem');
-
-const orderButton = document.querySelector('#orderButton');
-const template = document.querySelector('#overlayTemplate').innerHTML;
+const orderButton = document.querySelector("#orderButton");
+const template = document.querySelector("#overlayTemplate").innerHTML;
 const overlay = createOverlay(template);
 
-const errorTemplate = document.querySelector('#overlayErrorTemplate').innerHTML;
+const errorTemplate = document.querySelector("#overlayErrorTemplate").innerHTML;
 const errorOverlay = createOverlay(errorTemplate);
 
+orderButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  //валидация
+  function validateForm(form) {
+    let valid = true;
 
-
-orderButton.addEventListener('click', e=> {
-    e.preventDefault()
-    //валидация
-    function validateForm (form) {
-        let valid = true;
-    
-        if (!validateField(form.elements.name)) {
-            valid = false;
-        }
-    
-        if (!validateField(form.elements.phone)) {
-            valid = false;
-        }
-    
-        if (!validateField(form.elements.to)) {
-            valid = false;
-        }
-    
-        if (!validateField(form.elements.comment)) {
-            valid = false;
-        }
-        return valid;
-    }
-    
-    function validateField (field) {
-        field.nextElementSibling.textContent = field.validationMessage;
-        return field.checkValidity();
+    if (!validateField(form.elements.name)) {
+      valid = false;
     }
 
-    // server
-    if (validateForm(orderForm)) {
-        const data = {
-            name: orderForm.elements.name.value,
-            phone: orderForm.elements.phone.value,
-            to: orderForm.elements.to.value,
-            comment: orderForm.elements.comment.value
-        };
-        const xhr = new XMLHttpRequest();
-        xhr.responseType = 'json';
-        xhr.open('POST', 'https://webdev-api.loftschool.com/sendmail');
-        xhr.setRequestHeader('content-type', 'application/json');
-        xhr.send(JSON.stringify(data));
-        xhr.addEventListener('load', ()=> {
-            console.log(xhr.response.message);
-            responseStatus=xhr.response.status;
-            console.log(responseStatus)
-            //////////////// overlay
-            if (xhr.response.status === 1) {
-                overlay.open();
-                body.classList.add("body--active");
-                overlay.setContent("Заказ принят");
-                orderForm.reset();
-            }
-            else if (xhr.response.status === 0) {
-                errorOverlay.open();
-                errorOverlay.setContent('Отправить заказ не удалось, повторите запрос позже')
-            }
-        });
+    if (!validateField(form.elements.phone)) {
+      valid = false;
+    }
 
+    if (!validateField(form.elements.to)) {
+      valid = false;
+    }
+
+    if (!validateField(form.elements.comment)) {
+      valid = false;
+    }
+    return valid;
+  }
+
+  function validateField(field) {
+    field.nextElementSibling.textContent = field.validationMessage;
+    return field.checkValidity();
+  }
+
+  // server
+  if (validateForm(orderForm)) {
+    const data = {
+      name: orderForm.elements.name.value,
+      phone: orderForm.elements.phone.value,
+      to: orderForm.elements.to.value,
+      comment: orderForm.elements.comment.value,
     };
-
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = "json";
+    xhr.open("POST", "https://webdev-api.loftschool.com/sendmail");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.send(JSON.stringify(data));
+    xhr.addEventListener("load", () => {
+      console.log(xhr.response.message);
+      responseStatus = xhr.response.status;
+      console.log(responseStatus);
+      //////////////// overlay
+      if (xhr.response.status === 1) {
+        overlay.open();
+        body.classList.add("body--active");
+        overlay.setContent("Заказ принят");
+        orderForm.reset();
+      } else if (xhr.response.status === 0) {
+        errorOverlay.open();
+        errorOverlay.setContent(
+          "Отправить заказ не удалось, повторите запрос позже"
+        );
+      }
+    });
+  }
 });
 
 function createOverlay(template) {
-    let fragment = document.createElement('div');
+  let fragment = document.createElement("div");
 
-    fragment.innerHTML = template;
+  fragment.innerHTML = template;
 
-    const overlayElement = fragment.querySelector(".overlay");
-    const contentElement = fragment.querySelector(".overlay__content");
-    const titleElement = fragment.querySelector(".overlay__title");
-    const closeElement = fragment.querySelector(".overlay__close");
+  const overlayElement = fragment.querySelector(".overlay");
+  const contentElement = fragment.querySelector(".overlay__content");
+  const titleElement = fragment.querySelector(".overlay__title");
+  const closeElement = fragment.querySelector(".overlay__close");
 
-    
+  fragment = null;
 
-    fragment = null;
+  overlayElement.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (event.target === overlayElement) {
+      closeElement.click();
+    }
+  });
 
-    overlayElement.addEventListener('click', event => {
-        event.preventDefault();
-        if (event.target === overlayElement) {
-            closeElement.click();
-        }
-    });
+  closeElement.addEventListener("click", (e) => {
+    e.preventDefault();
+    body.classList.remove("body--active");
 
+    document.body.removeChild(overlayElement);
+  });
 
+  return {
+    open() {
+      document.body.appendChild(overlayElement);
+    },
 
-    closeElement.addEventListener('click', e => {
-        e.preventDefault();
-        body.classList.remove("body--active");
+    close() {
+      closeElement.click();
+    },
 
-        document.body.removeChild(overlayElement);
-
-    });
-
-    return {
-        open() {
-            document.body.appendChild(overlayElement); 
-        },
-
-        close() { 
-            closeElement.click();
-        },
-        
-        setContent(content) {
-            contentElement.innerHTML = content;
-  
-        },
-        setTitle(title) {
-            titleElement.textContent = title;
-        }
-    };
+    setContent(content) {
+      contentElement.innerHTML = content;
+    },
+    setTitle(title) {
+      titleElement.textContent = title;
+    },
+  };
 }
-
 
 /////////////////////////////////////////////////////////////
 
 // HAMBURGER OVERLAY
 
-const hamburger = document.querySelector('#hamburger');
-const closeNavigation = document.querySelector('.hamburger__open');
-const navigation = document.querySelector('#navigation');
+const hamburger = document.querySelector("#hamburger");
+const closeNavigation = document.querySelector(".hamburger__open");
+const navigation = document.querySelector("#navigation");
 
-hamburger.addEventListener('click', function(e) {
-    e.preventDefault();
-    const isActive = navigation.classList.contains("navigation--active")
-    if (isActive) {
-        navigation.classList.remove("navigation--active")
-        body.classList.remove("body--active")
-        closeNavigation.classList.remove("hamburger--active");
-    }
-    else {
-        navigation.classList.add("navigation--active");
-        body.classList.add("body--active");
-        closeNavigation.classList.add("hamburger--active");
-    }
-}
-)
-    
+hamburger.addEventListener("click", function (e) {
+  e.preventDefault();
+  const isActive = navigation.classList.contains("navigation--active");
+  if (isActive) {
+    navigation.classList.remove("navigation--active");
+    body.classList.remove("body--active");
+    closeNavigation.classList.remove("hamburger--active");
+  } else {
+    navigation.classList.add("navigation--active");
+    body.classList.add("body--active");
+    closeNavigation.classList.add("hamburger--active");
+  }
+});
+
 ////////////////////////////////////////////////////////////////
 
 // TEAM DESCRIPTION
@@ -288,46 +272,39 @@ hamburger.addEventListener('click', function(e) {
 //             } else {
 //                 link[i].classList.add("team__link--active");
 //             }
-            
-//         }) 
+
+//         })
 //     }
 // }
 
 // team(document.querySelectorAll('.team__link'));
 
+let teamAcco = document.querySelector("#teamAcco");
 
-let teamAcco = document.querySelector('#teamAcco');
+createTeamAcco(teamAcco);
 
-createTeamAcco (teamAcco);
+function createTeamAcco(accordeon) {
+  // let activeClass;
+  accordeon.addEventListener("click", function (e) {
+    if (e.target.classList.contains("team__link")) {
+      let links = e.target;
+      let isActive = links.classList.contains("team__link--active");
+      e.preventDefault();
 
-function createTeamAcco (accordeon) {
-    // let activeClass;
-    accordeon.addEventListener('click', function (e) {
-        if (e.target.classList.contains("team__link")) {
-            let links = e.target;
-            let isActive = links.classList.contains("team__link--active");
-            e.preventDefault();
-
-            if (isActive) {
-                links.classList.remove("team__link--active");
-            }
-            else {
-                const activeItem = document.querySelector('.team__link--active'); 
-                if (activeItem) {
-                    activeItem.classList.remove('team__link--active');
-                }
-                links.classList.add("team__link--active"); 
-            }
-
-             
-
+      if (isActive) {
+        links.classList.remove("team__link--active");
+      } else {
+        const activeItem = document.querySelector(".team__link--active");
+        if (activeItem) {
+          activeItem.classList.remove("team__link--active");
         }
-    })
+        links.classList.add("team__link--active");
+      }
+    }
+  });
 }
 
-
 /////////////////////////////////////////////////////////////////
-
 
 //MENU ACCO
 
@@ -353,38 +330,32 @@ function createTeamAcco (accordeon) {
 //     }
 // }
 
-
 /// 2 способ ДЕЛЕГИРОВАНИЕ
 
-
-let menuAcco = document.querySelector('#menuAcco');
+let menuAcco = document.querySelector("#menuAcco");
 createMenuAcco(menuAcco);
 
-
-function createMenuAcco (element) {
-    element.addEventListener('click', function(e) {
-        const item = e.target.closest('.menu-acco__item')
-        const activeClass = item.classList.contains("menu-acco__item--active");
-        e.preventDefault()
-            if (activeClass) {
-                item.classList.remove("menu-acco__item--active");
-            } 
-            else {
-                // ищем активный элемент, если он существует
-                const activeItem = document.querySelector('.menu-acco__item--active'); 
-                if (activeItem) {
-                    activeItem.classList.remove('menu-acco__item--active');
-                }
-                item.classList.add("menu-acco__item--active");
-            }
-        
-    }); 
-};
+function createMenuAcco(element) {
+  element.addEventListener("click", function (e) {
+    const item = e.target.closest(".menu-acco__item");
+    const activeClass = item.classList.contains("menu-acco__item--active");
+    e.preventDefault();
+    if (activeClass) {
+      item.classList.remove("menu-acco__item--active");
+    } else {
+      // ищем активный элемент, если он существует
+      const activeItem = document.querySelector(".menu-acco__item--active");
+      if (activeItem) {
+        activeItem.classList.remove("menu-acco__item--active");
+      }
+      item.classList.add("menu-acco__item--active");
+    }
+  });
+}
 
 //////3 способ, можно закрыть все три
 // let menuAcco = document.querySelector('#menuAcco');
 // createMenuAcco(menuAcco);
-
 
 // function createMenuAcco (element) {
 //     let activeClass;
@@ -395,7 +366,7 @@ function createMenuAcco (element) {
 //             if (activeClass) {
 //                 activeClass.classList.remove("menu-acco__item--active");
 //                 activeClass="";
-//             } 
+//             }
 //             else {
 //                 activeClass = item.parentElement;
 //                 activeClass.classList.add("menu-acco__item--active");
@@ -404,113 +375,93 @@ function createMenuAcco (element) {
 //     });
 // };
 
-
 /////////////////////////// REVIEWS POPUP
-let reviewPopup = document.querySelector('#reviewPopup');
-const reviewTemplate = document.querySelector('#overlayReviewTemplate').innerHTML;
+let reviewPopup = document.querySelector("#reviewPopup");
+const reviewTemplate = document.querySelector("#overlayReviewTemplate")
+  .innerHTML;
 const reviewOverlay = createOverlay(reviewTemplate);
 
 createReviewPopup(reviewPopup);
 
-function createReviewPopup (element) {
-    let reviewContent;
-    let reviewTitle;
-    element.addEventListener('click', function(e){
-        if (e.target.classList.contains('btn--black')) {
-            e.preventDefault();
-            let btnReview = e.target; 
-            reviewContent = btnReview.previousElementSibling;
-            reviewTitle =  reviewContent.previousElementSibling;
-            reviewOverlay.open();
-            body.classList.add("body--active");
-            reviewOverlay.setContent(reviewContent.textContent);
-            reviewOverlay.setTitle(reviewTitle.textContent)
-
-        }
-    })
+function createReviewPopup(element) {
+  let reviewContent;
+  let reviewTitle;
+  element.addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn--black")) {
+      e.preventDefault();
+      let btnReview = e.target;
+      reviewContent = btnReview.previousElementSibling;
+      reviewTitle = reviewContent.previousElementSibling;
+      reviewOverlay.open();
+      body.classList.add("body--active");
+      reviewOverlay.setContent(reviewContent.textContent);
+      reviewOverlay.setTitle(reviewTitle.textContent);
+    }
+  });
 }
-
-
 
 ///////// ONE PAGE SCROLL
 
-let sections = document.querySelectorAll('.section');
+let sections = document.querySelectorAll(".maincontent > .section");
 // console.log(sections.length)
-let display = document.querySelector('.maincontent')
+let display = document.querySelector(".maincontent");
 let indexActiveSection;
-let toNextSection;
-let toPrevSection;
+const sectionLen = sections.length;
+const lastIndex = sectionLen - 1;
 
-
-
-function changeClassDown() {
-let activeSection=document.querySelector('.active');
-if (activeSection.nextElementSibling.classList.contains('section')) {
-activeSection.classList.remove('active')
-activeSection = activeSection.nextElementSibling;
-activeSection.classList.add('active');
-}
-
+let toNextSection = function (index) {
+  return `${(index + 1) * -100}%`;
+};
+let toPrevSection = function (index) {
+  return `${(index - 1) * -100}%`;
 };
 
-function changeClassUp () {
-
-let activeSection=document.querySelector('.active');
-if (activeSection.previousElementSibling != null) {
-activeSection.classList.remove('active');
-activeSection = activeSection.previousElementSibling;
-activeSection.classList.add('active');
+// добавляем всем секциям индекс
+for (i = 0; i < sectionLen; i++) {
+  sections[i].dataset.index = i;
 }
 
-};
-function scrolling () {
-// let indexActiveSection;
-// let toNextSection;
-// let toPrevSection;
-
-for (i = 0; i < sections.length; i++) {
-if (sections[i].classList.contains('active')) {
-indexActiveSection = i;
+function updateClass(activeSection, newSection, coords) {
+  if (newSection && newSection.classList.contains("section")) {
+    activeSection.classList.remove("active");
+    newSection.classList.add("active");
+    display.style.transform = `translateY(${coords})`;
+  }
 }
 
-}
-toNextSection = (indexActiveSection + 1) * -100 + '%';
-toPrevSection = (indexActiveSection - 1) * -100 + '%';
-// console.log(indexActiveSection)
+document.addEventListener("wheel", function (e) {
+  if (!body.classList.contains("body--active")) {
+    const activeSection = document.querySelector(".section.active");
+    const activeIndex = parseInt(activeSection.dataset.index);
 
-// return toNextSection;
-}
+    const isDirectionDown = e.deltaY > 0;
 
-document.addEventListener('wheel', function (e) {
+    if (isDirectionDown && activeIndex < lastIndex) {
+      const nextElement = activeSection.nextElementSibling;
+      const nextSection = toNextSection(activeIndex);
+      updateClass(activeSection, nextElement, nextSection);
+    }
 
-
-scrolling();
-let deltaY = e.deltaY;
-
-if (deltaY > 0 && indexActiveSection < sections.length-1) {
-
-display.style.transform=`translateY(${toNextSection})`;
-changeClassDown();
-}
-
-if (deltaY < 0 && indexActiveSection > 0) {
-display.style.transform=`translateY(${toPrevSection})`;
-changeClassUp();
-};
-})
+    if (!isDirectionDown && activeIndex > 0) {
+      const prevElement = activeSection.previousElementSibling;
+      const prevSection = toPrevSection(activeIndex);
+      updateClass(activeSection, prevElement, prevSection);
+    }
+  }
+});
 
 /////// TO ORDER SECTION
 
-const toOrderSectionButton = document.querySelector('#toOrderSection');
-const orderSection = document.querySelector('#order')
-toOrderSectionButton.addEventListener('click', function(e) {
-e.preventDefault();
-let activeSection = document.querySelector('.active')
-// console.log(activeSection)
-if (activeSection) {
-activeSection.classList.remove('active');
-}
-orderSection.classList.add('active');
-display.style.transform = 'translateY(-700%)';
+const toOrderSectionButton = document.getElementById("toOrderSection");
+const orderSection = document.getElementById("order");
+toOrderSectionButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  const orderSection = document.querySelector(".order.section");
+  const indexOrderSection = parseInt(orderSection.dataset.index);
 
-})
+  //   нам нужен индекс предыдущего элемента
+  const newCoords = toNextSection(indexOrderSection - 1);
+
+  let activeSection = document.querySelector(".section.active");
+  updateClass(activeSection, orderSection, newCoords);
+});
