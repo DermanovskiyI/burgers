@@ -599,6 +599,18 @@ wrapper.addEventListener('click', function(e) {
         closeNavigation.classList.remove("hamburger--active");
         body.classList.remove("body--active");
     }
+    if(e.target.classList.contains('heroBtn')) {
+        const indexHeroSection = parseInt(heroSection.dataset.index);
+        const newCoords = toNextSection(indexHeroSection - 1);
+        let activeSection = document.querySelector(".section.active");
+        let activePage = document.querySelector(".pagination__link.pagination__link--active");
+        let nextPage = document.querySelector(".pagination__link.heroBtn");
+        updateClass(activeSection, heroSection, newCoords);
+        updateClassOnPaggination(activePage, nextPage);
+        navigation.classList.remove("navigation--active");
+        closeNavigation.classList.remove("hamburger--active");
+        body.classList.remove("body--active");
+    }
     if (targetBtn.classList.contains('aboutBtn') || targetBtn.classList.contains('arrow__pic--down')) {
         const indexBestSection = parseInt(bestSection.dataset.index);
         const newCoords = toNextSection(indexBestSection - 1);
