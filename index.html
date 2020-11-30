@@ -9,7 +9,7 @@
 <body>
     <div class="wrapper">
         <div class="maincontent">
-            <section class="hero section active">
+            <section class="hero section active" id="hero">
                 <div class="container container--without-align">
                     <header class="header">
                         <div class="header__col-left">
@@ -20,31 +20,32 @@
                         <div class="header__col-right">
                             <div class="header__buttons">
                                 <nav class="navigation" id="navigation">
-                                    <ul class="navigation__list">
+                                    <ul class="navigation__list" id="navigationBtns">
                                         <li class="navigation__item">
-                                            <a href="#" class="navigation__link">О нас</a>
+                                            <a href="#" class="navigation__link aboutBtn" >О нас</a>
                                         </li>
                                         <li class="navigation__item">
-                                            <a href="#" class="navigation__link">Бургеры</a>
+                                            <a href="#" class="navigation__link burgersBtn">Бургеры</a>
                                         </li>
                                         <li class="navigation__item">
-                                            <a href="#" class="navigation__link">Команда</a>
+                                            <a href="#" class="navigation__link teamBtn">Команда</a>
                                         </li>
                                         <li class="navigation__item">
-                                            <a href="#" class="navigation__link">Меню</a>
+                                            <a href="#" class="navigation__link menuBtn">Меню</a>
                                         </li>
                                         <li class="navigation__item">
-                                            <a href="#" class="navigation__link">Отзывы</a>
+                                            <a href="#" class="navigation__link reviewBtn">Отзывы</a>
                                         </li>
                                         <li class="navigation__item">
-                                            <a href="#" class="navigation__link">Как мы работаем</a>
+                                            <a href="#" class="navigation__link videoBtn">Как мы работаем</a>
                                         </li>
                                         <li class="navigation__item">
-                                            <a href="#" class="navigation__link">Контакты</a>
+                                            <a href="#" class="navigation__link contactsBtn">Контакты</a>
                                         </li>
+  
                                     </ul>
                                 </nav>
-                                <a href="#order" class="btn btn--with-margin" id="toOrderSection">Заказать</a>
+                                <a href="#order" class="btn btn--with-margin btnToOrder" id="toOrderSection">Заказать</a>
                             </div>
                             <a href="#" class="hamburger" id="hamburger">
                                 <div class="hamburger__open"></div>
@@ -73,7 +74,7 @@
                     </div>
                 </div>
             </section>
-            <section class="best section">
+            <section class="best section" id="best">
                 <div class="container">
                     <h2 class="title best-title">Мы лучшие</h2>
                         <ul class="best__list">
@@ -117,7 +118,7 @@
                         </ul>
                 </div>
             </section>
-            <section class="burger section">
+            <section class="burger section" id="burger">
                 <div class="container container--row">
                     <div class="arrow">
                       <a href="#" class="scroll" id="prev">
@@ -138,7 +139,7 @@
                                               <p class="burger__text">Ваш старый добрый знакомый, с рубленым бифштексом из 100% говядины, тремя кусочками нежнейшего сыра эмменталь, двумя помидорами, луком, салатом и соусом гриль теперь с добавлением экзотического соуса чураско.</p>
                                           <div class="burger__order">
                                               <p class="burger__price">500<span class="burger__price burger__price--lower-size">рублей</span> </p>
-                                              <a href="#order" class="btn">Заказать</a>
+                                              <a href="#order" class="btn toOrderFromBurgerBtn btnToOrder">Заказать</a>
                                           </div>
                                       </div>
                                   </div>
@@ -230,7 +231,7 @@
                                               <p class="burger__text">Ваш старый добрый знакомый, с рубленым бифштексом из 100% говядины, тремя кусочками нежнейшего сыра эмменталь, двумя помидорами, луком, салатом и соусом гриль теперь с добавлением экзотического соуса чураско.</p>
                                           <div class="burger__order">
                                               <p class="burger__price">500<span class="burger__price burger__price--lower-size">рублей</span> </p>
-                                              <a href="#order" class="btn">Заказать</a>
+                                              <a href="#order" class="btn toOrderFromBurgerBtn btnToOrder">Заказать</a>
                                           </div>
                                       </div>
                                   </div>
@@ -322,7 +323,7 @@
                                               <p class="burger__text">Ваш старый добрый знакомый, с рубленым бифштексом из 100% говядины, тремя кусочками нежнейшего сыра эмменталь, двумя помидорами, луком, салатом и соусом гриль теперь с добавлением экзотического соуса чураско.</p>
                                           <div class="burger__order">
                                               <p class="burger__price">500<span class="burger__price burger__price--lower-size">рублей</span> </p>
-                                              <a href="#order" class="btn">Заказать</a>
+                                              <a href="#order" class="btn toOrderFromBurgerBtn btnToOrder">Заказать</a>
                                           </div>
                                       </div>
                                   </div>
@@ -414,7 +415,7 @@
                                               <p class="burger__text">Ваш старый добрый знакомый, с рубленым бифштексом из 100% говядины, тремя кусочками нежнейшего сыра эмменталь, двумя помидорами, луком, салатом и соусом гриль теперь с добавлением экзотического соуса чураско.</p>
                                           <div class="burger__order">
                                               <p class="burger__price">500<span class="burger__price burger__price--lower-size">рублей</span> </p>
-                                              <a href="#order" class="btn">Заказать</a>
+                                              <a href="#order" class="btn toOrderFromBurgerBtn btnToOrder">Заказать</a>
                                           </div>
                                       </div>
                                   </div>
@@ -503,7 +504,7 @@
                     </div>
                 </div>
             </section>
-            <section class="team section">
+            <section class="team section" id="team">
                 <div class="team__container">
                     <h2 class="title team-title">Команда</h2>
                         <ul class="team__list" id="teamAcco">
@@ -562,7 +563,7 @@
                         </ul>
                 </div>
             </section>
-            <section class="menu section">
+            <section class="menu section" id="menu">
                 <div class="menu__title">Меню</div>
                 <ul class="menu-acco" id="menuAcco">
                     <li class="menu-acco__item">
@@ -604,7 +605,7 @@
 
                 </ul>
             </section>
-            <section class="review section">
+            <section class="review section" id="review">
                 <ul class="review__list" id="reviewPopup">
                     <li class="review__item review__item--1">
                         <div class="review__hover-block">
@@ -696,7 +697,7 @@
                     </li> 
                 </ul>
             </section>
-            <section class="work section">
+            <section class="work section" id="video">
                 <h3 class="title work-title">Как мы работаем</h3>
                 <div class="container"></div>
             </section>
@@ -782,7 +783,7 @@
                     </form>
                 </div>
             </section>
-            <section class="map section">
+            <section class="map section" id="contacts">
                 <div class="yandex__map"></div>
                 <footer class="footer">
                     <div class="footer__content">
@@ -835,24 +836,21 @@
                     </div>
                 </footer>
             </section>
-            <div class="pagination">
-                <div class="pagination__display">
-                    <a href="#" class="pagination__link"></a>
-                    <a href="#" class="pagination__link"></a>
-                    <a href="#" class="pagination__link"></a>
-                    <a href="#" class="pagination__link"></a>
-                    <a href="#" class="pagination__link"></a>
-                    <a href="#" class="pagination__link"></a>
-                    <a href="#" class="pagination__link"></a>
-                    <a href="#" class="pagination__link"></a>
-                    <a href="#" class="pagination__link"></a>
-                </div>
+          
+
+        </div>
+        <div class="pagination" id="pagination">
+            <div class="pagination__display">
+                <a href="#" class="pagination__link pagination__link--active heroBtn"></a>
+                <a href="#" class="pagination__link aboutBtn"></a>
+                <a href="#" class="pagination__link burgersBtn"></a>
+                <a href="#" class="pagination__link teamBtn"></a>
+                <a href="#" class="pagination__link menuBtn"></a>
+                <a href="#" class="pagination__link reviewBtn"></a>
+                <a href="#" class="pagination__link videoBtn"></a>
+                <a href="#" class="pagination__link btnToOrder"></a>
+                <a href="#" class="pagination__link contactsBtn"></a>
             </div>
-            <!-- <div class="slider slider--page">
-                <a href="#" class="scroll" id="down">
-                    <div class="visible-slider visible-slider--down"></div>
-                </a>
-            </div> -->
         </div>
     </div>
     
