@@ -1,0 +1,111 @@
+.player {
+    &__wrapper {
+        position: relative;
+        line-height: 0;
+    }
+    &__splash {
+        background: url(/picture/img/video.png);
+        background-position: 39% 30%;
+        background-repeat: no-repeat;
+        width: rem(660px);
+        height: rem(409px);
+        position: absolute;
+        bottom: 0;
+        &--active {
+            display: none;
+        }
+    }
+
+    &__controlls {
+        padding: rem(7px) rem(21px) rem(6px) rem(20px);
+        background-color: #3e3e3e;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__start {
+        background-image: url(/picture/icons/play.svg);
+        width: rem(16px);
+        height: rem(22px);
+        background-repeat: no-repeat;
+        display: inline-block;
+        position: relative;
+
+        &--active {
+            background-image: none;
+
+            &::after {
+                content: "";
+                width: 0.3rem;
+                height: rem(22px);
+                background-color: #626262;
+                position: absolute;
+                border-radius: rem(10px);
+            }
+
+            &::before {
+                content: "";
+                width: 0.3rem;
+                height: rem(22px);
+                background-color: #626262;
+                position: absolute;
+                margin-left: rem(10px);
+                border-radius: rem(10px);
+            }
+        }
+
+    }
+
+    &__duration {
+        font-family: Ubuntu;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: $white;
+        &-completed::after {
+            content: ":";
+            margin-left: rem(3px);
+        }
+    }
+
+    &__playback {
+        position: relative;
+        width: rem(350px);
+        height: rem(4px);
+        cursor: pointer;
+        border-radius: 10px;
+        background-color: #626262;
+    }
+
+    &__playback-button {
+        position: absolute;
+        width: rem(13px);
+        height: rem(13px);
+        border-radius: 50%;
+        top: rem(-4px);
+        background: #626262;
+    }
+
+    &__mute {
+        background: url(/picture/icons/volume.svg);
+        cursor: pointer;
+        width: rem(18px);
+        height: rem(22px); 
+    }
+    
+    &__volume {
+        width: rem(58px);
+        height: rem(4px);
+        border-radius: rem(1px);
+        background-color: #626262;
+        position: relative;
+        &-button {
+            position: absolute;
+            width: rem(13px);
+            height: rem(13px);
+            border-radius: 50%;
+            top: rem(-4px);
+            background: #626262;
+        }
+    }
+}

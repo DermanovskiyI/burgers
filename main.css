@@ -428,6 +428,10 @@ body {
   border-radius: 5px;
   width: 28.75rem;
 }
+.container--video {
+  align-items: center;
+  justify-content: initial;
+}
 .container--footer {
   flex-direction: initial;
   justify-content: initial;
@@ -1457,7 +1461,107 @@ p {
   font-size: 4.5rem;
   color: #f9b43b;
   color: #2f3234;
-  padding-top: 10%;
+  margin-bottom: 15%;
+  margin-top: 7%;
+}
+
+.player__wrapper {
+  position: relative;
+  line-height: 0;
+}
+.player__splash {
+  background: url(/picture/img/video.png);
+  background-position: 39% 30%;
+  background-repeat: no-repeat;
+  width: 41.25rem;
+  height: 25.5625rem;
+  position: absolute;
+  bottom: 0;
+}
+.player__splash--active {
+  display: none;
+}
+.player__controlls {
+  padding: 0.4375rem 1.3125rem 0.375rem 1.25rem;
+  background-color: #3e3e3e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.player__start {
+  background-image: url(/picture/icons/play.svg);
+  width: 1rem;
+  height: 1.375rem;
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
+}
+.player__start--active {
+  background-image: none;
+}
+.player__start--active::after {
+  content: "";
+  width: 0.3rem;
+  height: 1.375rem;
+  background-color: #626262;
+  position: absolute;
+  border-radius: 0.625rem;
+}
+.player__start--active::before {
+  content: "";
+  width: 0.3rem;
+  height: 1.375rem;
+  background-color: #626262;
+  position: absolute;
+  margin-left: 0.625rem;
+  border-radius: 0.625rem;
+}
+.player__duration {
+  font-family: Ubuntu;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+.player__duration-completed::after {
+  content: ":";
+  margin-left: 0.1875rem;
+}
+.player__playback {
+  position: relative;
+  width: 21.875rem;
+  height: 0.25rem;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #626262;
+}
+.player__playback-button {
+  position: absolute;
+  width: 0.8125rem;
+  height: 0.8125rem;
+  border-radius: 50%;
+  top: -0.25rem;
+  background: #626262;
+}
+.player__mute {
+  background: url(/picture/icons/volume.svg);
+  cursor: pointer;
+  width: 1.125rem;
+  height: 1.375rem;
+}
+.player__volume {
+  width: 3.625rem;
+  height: 0.25rem;
+  border-radius: 0.0625rem;
+  background-color: #626262;
+  position: relative;
+}
+.player__volume-button {
+  position: absolute;
+  width: 0.8125rem;
+  height: 0.8125rem;
+  border-radius: 50%;
+  top: -0.25rem;
+  background: #626262;
 }
 
 .order {
@@ -1533,12 +1637,13 @@ p {
 .form__input--without-margin {
   margin-right: 0;
 }
-.form__input-elem--padding {
+.form__input-elem--allign {
   padding-bottom: 5.3125rem;
 }
 .form__radio {
   display: inline-flex;
   margin-bottom: 1.4375rem;
+  cursor: pointer;
 }
 .form__input-radio {
   display: none;
@@ -1575,6 +1680,7 @@ p {
 .form__checkbox {
   display: inline-flex;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 @media (max-width: 480px) {
   .form__checkbox {

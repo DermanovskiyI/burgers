@@ -100,6 +100,7 @@ arrowLeft.addEventListener('click', function (e) {
 //цифры в поле телефон
 
 let phoneNumber = document.querySelector('#phoneNumber');
+let textArea = document.querySelector('.form__input-elem--allign')
 
 phoneNumber.addEventListener('keydown', function (event) {
     let isDigit = false;
@@ -532,12 +533,12 @@ function updateClass(activeSection, newSection, coords) {
     }
 };
 
-function updateClassOnPaggination (activePage, newPage) {
+function updateClassOnPaggination(activePage, newPage) {
     // if (newPage && newPage.classList.contains("page__link")) {
-        activePage.classList.remove('pagination__link--active');
-        newPage.classList.add('pagination__link--active');
+    activePage.classList.remove('pagination__link--active');
+    newPage.classList.add('pagination__link--active');
     // }
-    
+
 }
 
 document.addEventListener('wheel', function (e) {
@@ -559,6 +560,7 @@ document.addEventListener('wheel', function (e) {
             const nextPage = activePage.nextElementSibling;
             updateClass(activeSection, nextElement, nextSection);
             updateClassOnPaggination(activePage, nextPage);
+            // console.log(touchStart)
         }
         if (!isDirectionDown && activeIndex > 0) {
             const prevElement = activeSection.previousElementSibling;
@@ -569,6 +571,79 @@ document.addEventListener('wheel', function (e) {
     }
 
 })
+
+document.addEventListener('keydown', function (e) {
+
+    if (!body.classList.contains("body--active")) {
+        const activeSection = document.querySelector('.section.active');
+        const activePage = document.querySelector('.pagination__link.pagination__link--active');
+        const activeIndex = parseInt(activeSection.dataset.index);
+        const nextSection = toNextSection(activeIndex);
+        const prevSection = toPrevSection(activeIndex);
+
+        if (e.key == 'ArrowDown' && activeIndex < lastIndex && textArea.value.length < 1) {
+            const nextElement = activeSection.nextElementSibling;
+            const nextPage = activePage.nextElementSibling;
+            updateClass(activeSection, nextElement, nextSection);
+            updateClassOnPaggination(activePage, nextPage);
+        }
+        if (e.key == 'ArrowUp' && activeIndex > 0 && textArea.value.length < 1) {
+            const prevElement = activeSection.previousElementSibling;
+            const prevPage = activePage.previousElementSibling;
+            updateClass(activeSection, prevElement, prevSection);
+            updateClassOnPaggination(activePage, prevPage);
+        }
+    }
+});
+
+
+
+// let touchStart;
+// let touchEnd;
+//     // function getCoords () {
+//     // }
+// document.addEventListener('touchstart', function(e) {
+    
+//     console.log(e.changedTouches[0].pageY)
+//     touchStart = e.changedTouches[0].pageY;
+//     // display.style.color='red'
+            
+// })
+// document.addEventListener('touchend', function(e) {
+    
+//     console.log(e.changedTouches[0].pageY);
+//     touchEnd = e.changedTouches[0].pageY;
+// })
+document.addEventListener('touchmove', function(e) {
+    
+    console.log(e.changedTouches[0].pageY);
+    console.log(e);
+    // touchEnd = e.changedTouches[0].pageY;
+})
+// console.log(touchStart, touchEnd)
+
+
+        // return touchStart, touchEnd;
+    
+    
+    // console.log(getCoords())
+    // function slideOnPhone () {
+    //     if (touchStart > touchEnd) {
+    //         console.log('start');
+    //     } 
+    //     if (touchEnd > touchStart) {
+    //         console.log('end');
+    //     }
+    // };
+
+
+
+    
+
+    
+
+
+
 
 
 /////// NAVIGATION BUTTONS
@@ -584,22 +659,12 @@ const reviewSection = document.getElementById('review');
 const videoSection = document.getElementById('video');
 const contactsSection = document.getElementById('contacts');
 
-wrapper.addEventListener('click', function(e) {
-    e.preventDefault();
+wrapper.addEventListener('click', function (e) {
+    // e.preventDefault();
     let targetBtn = e.target;
-    if(e.target.classList.contains('btnToOrder')) {
-        const indexOrderSection = parseInt(orderSection.dataset.index);
-        const newCoords = toNextSection(indexOrderSection - 1);
-        let activeSection = document.querySelector(".section.active");
-        let activePage = document.querySelector(".pagination__link.pagination__link--active");
-        let nextPage = document.querySelector(".pagination__link.btnToOrder");
-        updateClass(activeSection, orderSection, newCoords);
-        updateClassOnPaggination(activePage, nextPage);
-        navigation.classList.remove("navigation--active");
-        closeNavigation.classList.remove("hamburger--active");
-        body.classList.remove("body--active");
-    }
-    if(e.target.classList.contains('heroBtn')) {
+
+    if (e.target.classList.contains('heroBtn')) {
+        e.preventDefault();
         const indexHeroSection = parseInt(heroSection.dataset.index);
         const newCoords = toNextSection(indexHeroSection - 1);
         let activeSection = document.querySelector(".section.active");
@@ -607,11 +672,9 @@ wrapper.addEventListener('click', function(e) {
         let nextPage = document.querySelector(".pagination__link.heroBtn");
         updateClass(activeSection, heroSection, newCoords);
         updateClassOnPaggination(activePage, nextPage);
-        navigation.classList.remove("navigation--active");
-        closeNavigation.classList.remove("hamburger--active");
-        body.classList.remove("body--active");
     }
     if (targetBtn.classList.contains('aboutBtn') || targetBtn.classList.contains('arrow__pic--down')) {
+        e.preventDefault();
         const indexBestSection = parseInt(bestSection.dataset.index);
         const newCoords = toNextSection(indexBestSection - 1);
         let activeSection = document.querySelector(".section.active");
@@ -623,7 +686,8 @@ wrapper.addEventListener('click', function(e) {
         closeNavigation.classList.remove("hamburger--active");
         body.classList.remove("body--active");
     }
-    if(targetBtn.classList.contains('burgersBtn')) {
+    if (targetBtn.classList.contains('burgersBtn')) {
+        e.preventDefault();
         const indexBurgerSection = parseInt(burgerSection.dataset.index);
         const newCoords = toNextSection(indexBurgerSection - 1);
         let activeSection = document.querySelector(".section.active");
@@ -635,7 +699,8 @@ wrapper.addEventListener('click', function(e) {
         closeNavigation.classList.remove("hamburger--active");
         body.classList.remove("body--active");
     }
-    if(targetBtn.classList.contains('teamBtn')) {
+    if (targetBtn.classList.contains('teamBtn')) {
+        e.preventDefault();
         const indexTeamSection = parseInt(teamSection.dataset.index);
         const newCoords = toNextSection(indexTeamSection - 1);
         let activeSection = document.querySelector(".section.active");
@@ -647,7 +712,8 @@ wrapper.addEventListener('click', function(e) {
         closeNavigation.classList.remove("hamburger--active");
         body.classList.remove("body--active");
     }
-    if(targetBtn.classList.contains('menuBtn')) {
+    if (targetBtn.classList.contains('menuBtn')) {
+        e.preventDefault();
         const indexMenuSection = parseInt(menuSection.dataset.index);
         const newCoords = toNextSection(indexMenuSection - 1);
         let activeSection = document.querySelector(".section.active");
@@ -659,7 +725,8 @@ wrapper.addEventListener('click', function(e) {
         closeNavigation.classList.remove("hamburger--active");
         body.classList.remove("body--active");
     }
-    if(targetBtn.classList.contains('reviewBtn')) {
+    if (targetBtn.classList.contains('reviewBtn')) {
+        e.preventDefault();
         const indexReviewSection = parseInt(reviewSection.dataset.index);
         const newCoords = toNextSection(indexReviewSection - 1);
         let activeSection = document.querySelector(".section.active");
@@ -671,7 +738,8 @@ wrapper.addEventListener('click', function(e) {
         closeNavigation.classList.remove("hamburger--active");
         body.classList.remove("body--active");
     }
-    if(targetBtn.classList.contains('videoBtn')) {
+    if (targetBtn.classList.contains('videoBtn')) {
+        e.preventDefault();
         const indexVideoSection = parseInt(videoSection.dataset.index);
         const newCoords = toNextSection(indexVideoSection - 1);
         let activeSection = document.querySelector(".section.active");
@@ -683,7 +751,21 @@ wrapper.addEventListener('click', function(e) {
         closeNavigation.classList.remove("hamburger--active");
         body.classList.remove("body--active");
     }
-    if(targetBtn.classList.contains('contactsBtn')) {
+    if (e.target.classList.contains('btnToOrder')) {
+        e.preventDefault();
+        const indexOrderSection = parseInt(orderSection.dataset.index);
+        const newCoords = toNextSection(indexOrderSection - 1);
+        let activeSection = document.querySelector(".section.active");
+        let activePage = document.querySelector(".pagination__link.pagination__link--active");
+        let nextPage = document.querySelector(".pagination__link.btnToOrder");
+        updateClass(activeSection, orderSection, newCoords);
+        updateClassOnPaggination(activePage, nextPage);
+        navigation.classList.remove("navigation--active");
+        closeNavigation.classList.remove("hamburger--active");
+        body.classList.remove("body--active");
+    }
+    if (targetBtn.classList.contains('contactsBtn')) {
+        e.preventDefault();
         const indexContactsSection = parseInt(contactsSection.dataset.index);
         const newCoords = toNextSection(indexContactsSection - 1);
         let activeSection = document.querySelector(".section.active");
@@ -695,7 +777,13 @@ wrapper.addEventListener('click', function(e) {
         closeNavigation.classList.remove("hamburger--active");
         body.classList.remove("body--active");
     }
-  
+
 });
+
+
+// ///////////////////// VIDEO
+
+
+
 
 

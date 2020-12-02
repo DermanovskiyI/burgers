@@ -15,6 +15,7 @@
         display: flex;
         margin-bottom: 1.1875rem;
     }
+
     &__input {
         margin-right: 1.4375rem;
         flex: 1;
@@ -47,12 +48,13 @@
     &__input--without-margin {
         margin-right: 0;
     }
-    &__input-elem--padding {
+    &__input-elem--allign {
         padding-bottom: 5.3125rem;
     }
     &__radio {
         display: inline-flex;
         margin-bottom: 1.4375rem;
+        cursor: pointer;
     }
     &__input-radio {
         display: none;
@@ -89,6 +91,7 @@
     &__checkbox {
         display: inline-flex;
         margin-bottom: rem(8px);
+        cursor: pointer;
         @include phones {
             display: flex;
             justify-content: center;

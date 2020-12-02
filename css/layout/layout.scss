@@ -81,6 +81,10 @@ body {
         border-radius: 5px;
         width: 28.75rem;
     }
+    &--video {
+        align-items: center;
+        justify-content: initial;
+    }
     &--footer {
         flex-direction: initial;
         justify-content: initial;
