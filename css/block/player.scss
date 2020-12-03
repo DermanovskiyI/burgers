@@ -11,10 +11,39 @@
         height: rem(409px);
         position: absolute;
         bottom: 0;
+        cursor: pointer;
+
         &--active {
             display: none;
         }
+        @include tablets {
+            width: 55rem;
+            height: 34rem;
+        }
+        @include phones {
+            width: 35.1rem;
+            height: 40.5rem;
+            background-position: 43% 30%;
+        }
+        &-button {
+            left: 50%;
+            top: 40%;
+            position: absolute;
+            fill: white;
+            opacity: .8;
+            fill: white;
+            transition: opacity .3s;
+            &:hover {
+                opacity: 1;
+                transition: opacity .3s;
+            }
+            &-pic {
+                width: rem(82px);
+                height: rem(118px);
+            }
+        }
     }
+    
 
     &__controlls {
         padding: rem(7px) rem(21px) rem(6px) rem(20px);
@@ -72,6 +101,7 @@
         position: relative;
         width: rem(350px);
         height: rem(4px);
+        padding: rem(3px) 0;
         cursor: pointer;
         border-radius: 10px;
         background-color: #626262;
@@ -84,13 +114,27 @@
         border-radius: 50%;
         top: rem(-4px);
         background: #626262;
+        transition: .2s;
+        // box-shadow: 0 0 5px #aaa;
+        &:hover {
+            box-shadow: 0 0 5px white;
+            transition: .2s;
+        }
     }
 
     &__mute {
-        background: url(/picture/icons/volume.svg);
+        // background: url(/picture/icons/volume.svg);
         cursor: pointer;
         width: rem(18px);
         height: rem(22px); 
+        &-button {
+            width: rem(18px);
+            height: rem(22px);
+            fill: #626262;
+            &-muted {
+                fill: white;
+            }
+        }
     }
     
     &__volume {
@@ -99,13 +143,26 @@
         border-radius: rem(1px);
         background-color: #626262;
         position: relative;
+        padding: rem(2px) 0;
         &-button {
             position: absolute;
             width: rem(13px);
             height: rem(13px);
             border-radius: 50%;
             top: rem(-4px);
+            left: 100%;
             background: #626262;
+            transition: .2s;
+            &:hover {
+                box-shadow: 0 0 5px white;
+                transition: .2s;
+            }
         }
+    }
+}
+
+#yt-player {
+    @include phones {
+        width: 35.1rem ;
     }
 }

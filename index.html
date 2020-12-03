@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1"> 
     <title>burgers</title>
     <link rel="stylesheet" href="./main.css">
 </head>
@@ -222,13 +223,13 @@
                               <div class="burger__item">
                                   <div class="burger__left">
                                       <div class="burger__img">
-                                          <img src="./picture/img/black-burger.png" alt="black-burger" class="burger__pic">
+                                          <img src="./picture/img/chiken_burger.png" alt="black-burger" class="burger__pic">
                                       </div>
                                   </div>
                                   <div class="burger__right">
                                       <div class="burger__desc">
-                                              <h2 class="title burger__title">Dark BEEF <br> Burger</h2>
-                                              <p class="burger__text">Ваш старый добрый знакомый, с рубленым бифштексом из 100% говядины, тремя кусочками нежнейшего сыра эмменталь, двумя помидорами, луком, салатом и соусом гриль теперь с добавлением экзотического соуса чураско.</p>
+                                              <h2 class="title burger__title">CHICKEN <br> Burger</h2>
+                                              <p class="burger__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique eos suscipit error distinctio enim nesciunt provident ea consequuntur, voluptatibus in a ullam hic quisquam ipsam commodi aut debitis explicabo quibusdam?</p>
                                           <div class="burger__order">
                                               <p class="burger__price">500<span class="burger__price burger__price--lower-size">рублей</span> </p>
                                               <a href="#order" class="btn toOrderFromBurgerBtn btnToOrder">Заказать</a>
@@ -314,13 +315,13 @@
                               <div class="burger__item">
                                   <div class="burger__left">
                                       <div class="burger__img">
-                                          <img src="./picture/img/black-burger.png" alt="black-burger" class="burger__pic">
+                                          <img src="./picture/img/nyc_burger.png" alt="black-burger" class="burger__pic">
                                       </div>
                                   </div>
                                   <div class="burger__right">
                                       <div class="burger__desc">
-                                              <h2 class="title burger__title">Dark BEEF <br> Burger</h2>
-                                              <p class="burger__text">Ваш старый добрый знакомый, с рубленым бифштексом из 100% говядины, тремя кусочками нежнейшего сыра эмменталь, двумя помидорами, луком, салатом и соусом гриль теперь с добавлением экзотического соуса чураско.</p>
+                                              <h2 class="title burger__title">NEW YORK <br> Burger</h2>
+                                              <p class="burger__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus neque odio dicta, fuga mollitia quisquam magni animi sequi illum itaque laboriosam, error tenetur dolore qui voluptas aliquid, architecto ea cumque.</p>
                                           <div class="burger__order">
                                               <p class="burger__price">500<span class="burger__price burger__price--lower-size">рублей</span> </p>
                                               <a href="#order" class="btn toOrderFromBurgerBtn btnToOrder">Заказать</a>
@@ -406,13 +407,13 @@
                               <div class="burger__item">
                                   <div class="burger__left">
                                       <div class="burger__img">
-                                          <img src="./picture/img/black-burger.png" alt="black-burger" class="burger__pic">
+                                          <img src="./picture/img/burger_sandwich.png" alt="black-burger" class="burger__pic">
                                       </div>
                                   </div>
                                   <div class="burger__right">
                                       <div class="burger__desc">
-                                              <h2 class="title burger__title">Dark BEEF <br> Burger</h2>
-                                              <p class="burger__text">Ваш старый добрый знакомый, с рубленым бифштексом из 100% говядины, тремя кусочками нежнейшего сыра эмменталь, двумя помидорами, луком, салатом и соусом гриль теперь с добавлением экзотического соуса чураско.</p>
+                                              <h2 class="title burger__title">SANDWICH <br> Burger</h2>
+                                              <p class="burger__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro iure unde quidem inventore, distinctio, odit temporibus quo ducimus amet cumque voluptate blanditiis labore deserunt ratione mollitia perferendis, fugiat incidunt animi.</p>
                                           <div class="burger__order">
                                               <p class="burger__price">500<span class="burger__price burger__price--lower-size">рублей</span> </p>
                                               <a href="#order" class="btn toOrderFromBurgerBtn btnToOrder">Заказать</a>
@@ -703,7 +704,13 @@
                     <div class="player">
                         <div class="player__wrapper">
                             <div id="yt-player"></div>
-                            <div class="player__splash"></div>
+                            <div class="player__splash">
+                                <a href="#" class="player__splash-button">
+                                    <svg class="player__splash-button-pic" >
+                                        <use xlink:href="./picture/icons/sprite.svg#play" viewBox="0 0 117.5 171.6"></use>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                         <div class="player__controlls">
                             <a href="#" class="player__start"></a>
@@ -712,11 +719,15 @@
                                 <span class="player__duration-estimate">0:00</span>
                             </div>
                             <div class="player__playback">
-                                <a href="#"  class="player__playback-button"></a>
+                                <a href="#"  class="player__playback-button" draggable="true"></a>
                             </div>
-                            <div class="player__mute"></div>
+                            <div class="player__mute">
+                                <svg class="player__mute-button" >
+                                    <use xlink:href="./picture/icons/sprite.svg#volume" viewBox="0 0 138 171.6"></use>
+                                </svg>
+                            </div>
                             <div class="player__volume">
-                                <a href="#"  class="player__volume-button"></a>
+                                <a href="#"  class="player__volume-button" draggable="true" id="volumeBtn"></a>
                             </div>
                         </div>
                     </div>
@@ -805,7 +816,7 @@
                 </div>
             </section>
             <section class="map section" id="contacts">
-                <div class="yandex__map"></div>
+                <div class="yandex__map" id="map"></div>
                 <footer class="footer">
                     <div class="footer__content">
                         <div class="footer__col-left">
@@ -900,8 +911,10 @@
             </div>
         </div>
     </script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f7ef329e-e26a-4f62-9239-b089c23d4004&lang=ru_RU" type="text/javascript"></script>
     <script src="index.js"></script>
-    <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
-    <script src="pleer.js"></script>
+    <script src="./js/pleer.js"></script>
+    <script src="./js/map.js"></script>
+
 </body>
 </html>

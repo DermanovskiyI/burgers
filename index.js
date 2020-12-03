@@ -614,12 +614,12 @@ document.addEventListener('keydown', function (e) {
 //     console.log(e.changedTouches[0].pageY);
 //     touchEnd = e.changedTouches[0].pageY;
 // })
-document.addEventListener('touchmove', function(e) {
+// document.addEventListener('touchmove', function(e) {
     
-    console.log(e.changedTouches[0].pageY);
-    console.log(e);
-    // touchEnd = e.changedTouches[0].pageY;
-})
+//     console.log(e.changedTouches[0].pageY);
+//     console.log(e);
+//     // touchEnd = e.changedTouches[0].pageY;
+// })
 // console.log(touchStart, touchEnd)
 
 
@@ -781,7 +781,7 @@ wrapper.addEventListener('click', function (e) {
 });
 
 
-// ///////////////////// VIDEO
+
 
 
 

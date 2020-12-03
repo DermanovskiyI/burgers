@@ -13,6 +13,18 @@
         border-radius: 50%;
         background-color: $white;
         position: relative;
+        &:hover::after {
+            content: "";
+            width: rem(20px);
+            height: rem(20px);
+            background: transparent;
+            position: absolute;
+            border: rem(2px) solid white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
     &__link--active::after {
         content: "";
