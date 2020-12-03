@@ -35,14 +35,14 @@
             }
             @include phones {
                 // width: 100%;
-                // width: 33rem;
+                width: 33rem;
                 padding: 20% 11%;
-                width: 90%;
-                position: fixed;
-                top: 400%;
-                left: 10%;
-                bottom: 0%;
-                right: 0%;
+                // width: 90%;
+                // position: fixed;
+                // top: 400%;
+                // left: 10%;
+                // bottom: 0%;
+                // right: 0%;
             }
         }
         .menu-acco__text {
@@ -95,10 +95,10 @@
         transition: .5s;
         position: relative;
         @include phones {
-            opacity: 0;
-            height: 0%;
-            overflow: hidden;
-            transition: opacity .5s;
+            // opacity: 0;
+            // height: 0%;
+            // overflow: hidden;
+            // transition: opacity .5s;
             &::after {
                 content: "";
                 background: url(/picture/img/close_grey.png);
