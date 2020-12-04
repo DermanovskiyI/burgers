@@ -877,7 +877,7 @@ p {
   }
 }
 .burger__pic {
-  max-width: 100%;
+  max-width: 99%;
 }
 .burger__desc {
   display: flex;

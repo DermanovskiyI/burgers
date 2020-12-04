@@ -44,6 +44,8 @@ arrowLeft.addEventListener('click', function (e) {
     items.style.right = currentRight + 'px';
 })
 
+
+
 ///////////////////////////////////////////////////////////////////////////////////////
 
 // OVERLAY ПО КНОПКЕ ЗАКАЗАТЬ (делаем через создание разметки в js)
@@ -429,7 +431,7 @@ function createReviewPopup(element) {
 
         }
     })
-}
+};
 
 
 
@@ -732,24 +734,13 @@ wrapper.addEventListener('click', function (e) {
 
 });
 
-// document.addEventListener('touchmove', function(e){
-//     let screenY = e.changedTouches[0].screenY
-//     let clientY = e.changedTouches[0].clientY;
-//     console.log(e)
-    
-//     console.log('target' + ' '+ e.targetTouches[0].clientY, e.targetTouches[0].screenY, e.targetTouches[0].pageY)
-//     console.log('changed' + ' '+  e.changedTouches[0].clientY,e.changedTouches[0].screenY,  e.changedTouches[0].pageY)
-//     console.log('touches' + ' '+    e.touches[0].clientY, e.touches[0].screenY, e.touches[0].pageY)
-
-   
-// })
 
 let startCoords;
 let endCoords;
 
 
 function swipe(start, end) {
-    console.log(start, end)
+
     if (!body.classList.contains("body--active")) {
         const activeSection = document.querySelector('.section.active');
         const activePage = document.querySelector('.pagination__link.pagination__link--active');
@@ -757,55 +748,49 @@ function swipe(start, end) {
         const nextSection = toNextSection(activeIndex);
         const prevSection = toPrevSection(activeIndex);
         if (start > end && activeIndex > 0 && textArea.value.length < 1 && start != 0) {
-            console.log('листай вверх');
+
             const prevElement = activeSection.previousElementSibling;
             const prevPage = activePage.previousElementSibling;
             updateClass(activeSection, prevElement, prevSection);
             updateClassOnPaggination(activePage, prevPage);
             startCoords = 0;
             endCoords = 0;
-            console.log(startCoords,endCoords)
-    
+
         }
         if (start < end && activeIndex < lastIndex && textArea.value.length < 1 && start != 0) {
-            console.log('листай вниз');
-    
+
             const nextElement = activeSection.nextElementSibling;
             const nextPage = activePage.nextElementSibling;
             updateClass(activeSection, nextElement, nextSection);
             updateClassOnPaggination(activePage, nextPage);
             startCoords = 0;
             endCoords = 0;
-            console.log(startCoords,endCoords)
         }
     }
-    
-    
+
+
 };
 
 document.addEventListener('touchend', function (e) {
-    // function trololo () {
-    console.log(e.targetTouches)
-    // let startCoords;
-    // let endCoords;
-    // if (e)
+
     document.ontouchmove = getStartCoord;
     function getStartCoord(e) {
-        // console.log(e)
+
         startCoords = e.changedTouches[0].clientY;
-        // console.log(startCoords)
+
     }
 
     document.ontouchstart = getEndCoord;
+
     function getEndCoord(e) {
 
         endCoords = e.changedTouches[0].clientY;
-        // console.log(endCoords)
+
     }
 
     swipe(startCoords, endCoords);
 
-})
+});
 
 
 
